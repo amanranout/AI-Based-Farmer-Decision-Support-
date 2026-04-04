@@ -4,7 +4,7 @@
 // ============================================
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://roots-to-rise-gna-hackathon4-0.onrender.com/api';
 
 // Register service worker for PWA support.
 if ('serviceWorker' in navigator) {
