@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="SmartFarm icon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="url(#bg)"/>
+  <path d="M256 108c-8 56-37 89-91 105 54 16 83 49 91 105 8-56 37-89 91-105-54-16-83-49-91-105z" fill="url(#leaf)"/>
+  <circle cx="256" cy="350" r="62" fill="#22c55e"/>
+  <path d="M256 290v84" stroke="#052e16" stroke-width="16" stroke-linecap="round"/>
+</svg>

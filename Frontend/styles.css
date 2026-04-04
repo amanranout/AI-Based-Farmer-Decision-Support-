@@ -61,6 +61,41 @@ body {
     gap: 2rem;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 .nav-link {
     color: white;
     text-decoration: none;
@@ -499,9 +534,48 @@ body {
         font-size: 8rem;
     }
 
+    .nav-toggle {
+        display: inline-flex;
+    }
+
     .nav-menu {
-        gap: 1rem;
-        font-size: 0.9rem;
+        position: absolute;
+        top: 100%;
+        right: 1rem;
+        width: min(78vw, 320px);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.85rem;
+        font-size: 0.95rem;
+        background: linear-gradient(135deg, rgba(39, 174, 96, 0.98), rgba(46, 204, 113, 0.98));
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 0.7rem 0.8rem;
+        border-radius: 8px;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+        opacity: 1;
     }
 
     .nav-container {
@@ -542,8 +616,8 @@ body {
     }
 
     .nav-menu {
-        flex-direction: column;
-        gap: 0.5rem;
+        right: 0.75rem;
+        width: calc(100vw - 1.5rem);
     }
 
     .demo-form {
