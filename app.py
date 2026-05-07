@@ -71,11 +71,11 @@ DISEASE_TREATMENTS = {
 
 # Market Prices
 MARKET_PRICES = {
-    'wheat': {'delhi': 2100, 'punjab': 2000, 'gujarati': 2050},
-    'rice': {'delhi': 3200, 'punjab': 3100, 'gujarati': 3150},
-    'cotton': {'delhi': 5200, 'punjab': 5000, 'gujarati': 5100},
-    'potato': {'delhi': 1200, 'punjab': 1100, 'gujarati': 1150},
-    'maize': {'delhi': 1800, 'punjab': 1750, 'gujarati': 1850}
+    'wheat': {'delhi': 2145, 'punjab': 2587, 'gujarati': 2050},
+    'rice': {'delhi': 3200, 'punjab': 4430, 'gujarati': 3150},
+    'cotton': {'delhi': 5200, 'punjab': 7517, 'gujarati': 5100},
+    'potato': {'delhi': 1200, 'punjab': 700, 'gujarati': 1150},
+    'maize': {'delhi': 1800, 'punjab': 2600, 'gujarati': 1850}
 }
 
 # Weather Data
