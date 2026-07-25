@@ -65,7 +65,7 @@ CROP_DATABASE = {
         'emoji': '🌾',
         'season': 'Winter (Nov-May)',
         'water_need': 'Medium (400-500mm)',
-        'market_price': 2100,
+        'market_price': 2500,
         'yield_per_acre': 40,
         'growth_period': '120-140 days',
         'best_soil': ['loamy', 'black'],
@@ -75,7 +75,7 @@ CROP_DATABASE = {
         'emoji': '🍚',
         'season': 'Monsoon (June-Oct)',
         'water_need': 'High (1000-1500mm)',
-        'market_price': 3200,
+        'market_price': 3400,
         'yield_per_acre': 45,
         'growth_period': '120-150 days',
         'best_soil': ['clayey', 'loamy'],
@@ -85,7 +85,7 @@ CROP_DATABASE = {
         'emoji': '🤍',
         'season': 'Summer (March-Nov)',
         'water_need': 'Medium (500-650mm)',
-        'market_price': 5200,
+        'market_price': 7200,
         'yield_per_acre': 15,
         'growth_period': '150-180 days',
         'best_soil': ['black', 'clayey'],
@@ -95,7 +95,7 @@ CROP_DATABASE = {
         'emoji': '🍯',
         'season': 'Year-round',
         'water_need': 'High (1200-2250mm)',
-        'market_price': 350,
+        'market_price': 380,
         'yield_per_acre': 50,
         'growth_period': '12-18 months',
         'best_soil': ['black', 'loamy'],
@@ -105,7 +105,7 @@ CROP_DATABASE = {
         'emoji': '🌽',
         'season': 'Summer-Monsoon',
         'water_need': 'Medium (500-750mm)',
-        'market_price': 1800,
+        'market_price': 2000-2200,
         'yield_per_acre': 35,
         'growth_period': '90-120 days',
         'best_soil': ['loamy', 'sandy'],
@@ -115,7 +115,7 @@ CROP_DATABASE = {
         'emoji': '🥔',
         'season': 'Winter (Oct-March)',
         'water_need': 'Medium (450-650mm)',
-        'market_price': 1200,
+        'market_price': 600,
         'yield_per_acre': 200,
         'growth_period': '90-120 days',
         'best_soil': ['loamy', 'sandy'],
@@ -204,11 +204,11 @@ DISEASE_TREATMENTS = {
 
 # Market Prices by Region (₹ per quintal)
 MARKET_PRICES = {
-    'wheat': {'delhi': 2100, 'punjab': 2000, 'gujarati': 2050, 'haryana': 2080},
-    'rice': {'delhi': 3200, 'punjab': 3100, 'gujarati': 3150, 'west_bengal': 3250},
-    'cotton': {'delhi': 5200, 'punjab': 5000, 'gujarati': 5100, 'karnataka': 5300},
-    'potato': {'delhi': 1200, 'punjab': 1100, 'gujarati': 1150, 'himachal': 1400},
-    'maize': {'delhi': 1800, 'punjab': 1750, 'gujarati': 1850, 'maharashtra': 1900}
+    'wheat': {'delhi': 2800, 'punjab': 2500, 'gujarati': 2050, 'haryana': 2080},
+    'rice': {'delhi': 3400, 'punjab': 3500, 'gujarati': 3150, 'west_bengal': 3250},
+    'cotton': {'delhi': ~5200, 'punjab': 7000, 'gujarati': 5100, 'karnataka': 5300},
+    'potato': {'delhi': 900, 'punjab': 600, 'gujarati': 1150, 'himachal': 1400},
+    'maize': {'delhi': 2200, 'punjab': 2050, 'gujarati': 1850, 'maharashtra': 1900}
 }
 
 # Weather Data by Region with Detailed Alerts
