@@ -4,7 +4,16 @@
 // ============================================
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://roots-to-rise-gna-hackathon4-0.onrender.com/api';
+
+// Register service worker for PWA support.
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').catch(() => {
+            console.log('Service worker registration failed');
+        });
+    });
+}
 
 // ===== CROP RECOMMENDATION =====
 function getRecommendation() {
@@ -301,12 +310,28 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('⚠️ Backend not connected');
     });
 
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('open');
+            navToggle.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', navMenu.classList.contains('open') ? 'true' : 'false');
+        });
+    }
+
     // Smooth scroll navigation
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.getElementById(this.getAttribute('href').substring(1));
             if (target) target.scrollIntoView({ behavior: 'smooth' });
+            if (navMenu && navToggle) {
+                navMenu.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 
