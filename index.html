@@ -15,10 +15,16 @@
                 <span class="logo-text">SmartFarm AI</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#demo" class="nav-link">Demo</a></li>
-                <li><a href="#schemes" class="nav-link">Schemes</a></li>
+                <li><a href="#home" class="nav-link" data-i18n="nav-home">Home</a></li>
+                <li><a href="#features" class="nav-link" data-i18n="nav-features">Features</a></li>
+                <li><a href="#demo" class="nav-link" data-i18n="nav-demo">Demo</a></li>
+                <li><a href="#schemes" class="nav-link" data-i18n="nav-schemes">Schemes</a></li>
+                <li>
+                    <select id="languageSelector" class="language-selector" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </nav>
@@ -26,10 +32,10 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Smart Farming, Smart Earnings 🌾</h1>
-            <p>From Soil to Sale – Powered by AI</p>
-            <p class="subtitle">Complete guidance from Sowing → Growing → Harvesting → Selling</p>
-            <button class="cta-btn" onclick="scrollToDemo()">Start Demo</button>
+            <h1 data-i18n="hero-title">Smart Farming, Smart Earnings 🌾</h1>
+            <p data-i18n="hero-subtitle">From Soil to Sale – Powered by AI</p>
+            <p class="subtitle" data-i18n="hero-desc">Complete guidance from Sowing → Growing → Harvesting → Selling</p>
+            <button class="cta-btn" onclick="scrollToDemo()" data-i18n="hero-btn">Start Demo</button>
         </div>
         <div class="hero-image">
             <div class="hero-illustration">
@@ -40,58 +46,58 @@
 
     <!-- Features Overview Section -->
     <section id="features" class="features">
-        <h2>Our Smart Modules 🔹</h2>
+        <h2 data-i18n="features-title">Our Smart Modules 🔹</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🌱</div>
-                <h3>Smart Crop Recommendation</h3>
-                <p>ML model analyzes soil, weather & location to suggest the best crop</p>
+                <h3 data-i18n="feature-crop">Smart Crop Recommendation</h3>
+                <p data-i18n="feature-crop-desc">ML model analyzes soil, weather & location to suggest the best crop</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💧</div>
-                <h3>Smart Irrigation System</h3>
-                <p>IoT sensors optimize water usage based on soil moisture & temperature</p>
+                <h3 data-i18n="feature-irrigation">Smart Irrigation System</h3>
+                <p data-i18n="feature-irrigation-desc">IoT sensors optimize water usage based on soil moisture & temperature</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌦️</div>
-                <h3>Weather Prediction & Alerts</h3>
-                <p>Real-time alerts for rain, heatwaves, and frost conditions</p>
+                <h3 data-i18n="feature-weather">Weather Prediction & Alerts</h3>
+                <p data-i18n="feature-weather-desc">Real-time alerts for rain, heatwaves, and frost conditions</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🐛</div>
-                <h3>Disease & Pest Detection</h3>
-                <p>AI-powered Computer Vision detects diseases and pest attacks</p>
+                <h3 data-i18n="feature-disease">Disease & Pest Detection</h3>
+                <p data-i18n="feature-disease-desc">AI-powered Computer Vision detects diseases and pest attacks</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
-                <h3>Yield Prediction</h3>
-                <p>Forecasts expected crop output for better planning</p>
+                <h3 data-i18n="feature-yield">Yield Prediction</h3>
+                <p data-i18n="feature-yield-desc">Forecasts expected crop output for better planning</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💰</div>
-                <h3>Market Price Prediction</h3>
-                <p>Shows current mandi prices and future trends for smart selling</p>
+                <h3 data-i18n="feature-price">Market Price Prediction</h3>
+                <p data-i18n="feature-price-desc">Shows current mandi prices and future trends for smart selling</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📣</div>
-                <h3>Subsidy & Scheme Finder</h3>
-                <p>Discover government subsidies, eligibility criteria, and application guides for farmers.</p>
+                <h3 data-i18n="feature-subsidy">Subsidy & Scheme Finder</h3>
+                <p data-i18n="feature-subsidy-desc">Discover government subsidies, eligibility criteria, and application guides for farmers.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📰</div>
-                <h3>Farmer News & Alerts</h3>
-                <p>Get the latest agriculture news, policy updates, weather alerts, and market subsidy announcements.</p>
+                <h3 data-i18n="feature-news">Farmer News & Alerts</h3>
+                <p data-i18n="feature-news-desc">Get the latest agriculture news, policy updates, weather alerts, and market subsidy announcements.</p>
             </div>
         </div>
     </section>
 
     <!-- Demo Section -->
     <section id="demo" class="demo-section">
-        <h2>🔹 Interactive Demo</h2>
+        <h2 data-i18n="demo-title">🔹 Interactive Demo</h2>
         <div class="demo-container">
             <!-- Crop Recommendation Demo -->
             <div class="demo-card">
-                <h3>📱 1. Smart Crop Recommendation</h3>
+                <h3 data-i18n="demo-crop">📱 1. Smart Crop Recommendation</h3>
                 <form id="cropForm" class="demo-form">
                     <div class="form-group">
                         <label>Soil Type:</label>
@@ -120,7 +126,7 @@
 
             <!-- Smart Irrigation Demo -->
             <div class="demo-card">
-                <h3>💧 2. Smart Irrigation Advisor</h3>
+                <h3 data-i18n="demo-irrigation">💧 2. Smart Irrigation Advisor</h3>
                 <form class="demo-form">
                     <div class="form-group">
                         <label>Soil Moisture Level (%):</label>
@@ -141,7 +147,7 @@
 
             <!-- Weather Alert Demo -->
             <div class="demo-card">
-                <h3>🌦️ 3. Weather Prediction & Alerts</h3>
+                <h3 data-i18n="demo-weather">🌦️ 3. Weather Prediction & Alerts</h3>
                 <form class="demo-form">
                     <div class="form-group">
                         <label>Select Your Region:</label>
@@ -162,7 +168,7 @@
 
             <!-- Disease Detection Demo -->
             <div class="demo-card">
-                <h3>🐛 4. Disease & Pest Detection</h3>
+                <h3 data-i18n="demo-disease">🐛 4. Disease & Pest Detection</h3>
                 <form class="demo-form">
                     <div class="form-group">
                         <label>Crop Type:</label>
@@ -194,7 +200,7 @@
 
             <!-- Yield Prediction Demo -->
             <div class="demo-card">
-                <h3>📊 5. Yield Prediction</h3>
+                <h3 data-i18n="demo-yield">📊 5. Yield Prediction</h3>
                 <form class="demo-form">
                     <div class="form-group">
                         <label>Crop Name:</label>
@@ -218,7 +224,7 @@
 
             <!-- Market Price Demo -->
             <div class="demo-card">
-                <h3>💰 6. Smart Market Price Prediction</h3>
+                <h3 data-i18n="demo-price">💰 6. Smart Market Price Prediction</h3>
                 <form class="demo-form">
                     <div class="form-group">
                         <label>Select Crop:</label>
@@ -252,27 +258,27 @@
 
     <!-- Government Schemes Section -->
     <section id="schemes" class="schemes-section">
-        <h2>🚜 Government Schemes & Benefits</h2>
+        <h2 data-i18n="schemes-title">🚜 Government Schemes & Benefits</h2>
         <div class="schemes-grid">
             <div class="scheme-card">
-                <h3>PM-KISAN Samman Nidhi</h3>
-                <p>Direct income support of ₹6,000/year to all farmers</p>
-                <button class="scheme-btn" onclick="applyScheme('PM-KISAN')">Learn More</button>
+                <h3 data-i18n="scheme-pm-kisan">PM-KISAN Samman Nidhi</h3>
+                <p data-i18n="scheme-pm-kisan-desc">Direct income support of ₹6,000/year to all farmers</p>
+                <button class="scheme-btn" onclick="applyScheme('PM-KISAN')" data-i18n="learn-more">Learn More</button>
             </div>
             <div class="scheme-card">
-                <h3>Pradhan Mantri Fasal Bima Yojana</h3>
-                <p>Crop insurance coverage against natural calamities</p>
-                <button class="scheme-btn" onclick="applyScheme('PMFBY')">Learn More</button>
+                <h3 data-i18n="scheme-fasal">Pradhan Mantri Fasal Bima Yojana</h3>
+                <p data-i18n="scheme-fasal-desc">Crop insurance coverage against natural calamities</p>
+                <button class="scheme-btn" onclick="applyScheme('PMFBY')" data-i18n="learn-more">Learn More</button>
             </div>
             <div class="scheme-card">
-                <h3>Soil Health Card Scheme</h3>
-                <p>Free soil testing to improve fertility and productivity</p>
-                <button class="scheme-btn" onclick="applyScheme('SHC')">Learn More</button>
+                <h3 data-i18n="scheme-soil">Soil Health Card Scheme</h3>
+                <p data-i18n="scheme-soil-desc">Free soil testing to improve fertility and productivity</p>
+                <button class="scheme-btn" onclick="applyScheme('SHC')" data-i18n="learn-more">Learn More</button>
             </div>
             <div class="scheme-card">
-                <h3>e-NAM - National Agriculture Market</h3>
-                <p>Direct online marketing platform for farmers</p>
-                <button class="scheme-btn" onclick="applyScheme('eNAM')">Learn More</button>
+                <h3 data-i18n="scheme-enam">e-NAM - National Agriculture Market</h3>
+                <p data-i18n="scheme-enam-desc">Direct online marketing platform for farmers</p>
+                <button class="scheme-btn" onclick="applyScheme('eNAM')" data-i18n="learn-more">Learn More</button>
             </div>
         </div>
     </section>
@@ -280,28 +286,210 @@
     <!-- Latest Farmer Subsidies & News -->
     <section class="news-section">
         <div class="section-head">
-            <h2>Latest Farmer Subsidies & News</h2>
-            <button class="scheme-btn" type="button" onclick="fetchLiveNews()">Refresh Live News</button>
+            <h2 data-i18n="news-title">Latest Farmer Subsidies & News</h2>
+            <button class="scheme-btn" type="button" onclick="fetchLiveNews()" data-i18n="refresh-news">Refresh Live News</button>
         </div>
         <div id="newsLoading" class="news-loading">Loading live news and information...</div>
         <div class="news-grid" id="liveNewsList">
-            <!-- Live news cards will be rendered here -->
+            <!-- Demo News Cards -->
+            <div class="news-card">
+                <div class="news-icon">💰</div>
+                <h3>PM-KISAN Yojana: ₹6,000 Installments Begin</h3>
+                <p>The government has announced the 15th installment of PM-KISAN Samman Nidhi scheme. Farmers can check their payment status on pmkisan.gov.in</p>
+                <div class="news-meta">
+                    <span>Government Update</span>
+                    <span>Aug 10, 2026</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-icon">🌾</div>
+                <h3>Record Wheat Procurement at ₹2,450 per Quintal</h3>
+                <p>Government procurement centers have purchased over 32 million tonnes of wheat. Current MSP rates are the highest in 5 years, benefiting millions of farmers.</p>
+                <div class="news-meta">
+                    <span>Market Update</span>
+                    <span>Aug 15, 2026</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-icon">🌦️</div>
+                <h3>Monsoon Alert: Heavy Rainfall Expected in North India</h3>
+                <p>IMD warns of heavy rainfall (100-200mm) over Punjab, Himachal Pradesh and Jammu-Kashmir. Farmers advised to protect crops and ensure proper drainage.</p>
+                <div class="news-meta">
+                    <span>Weather Alert</span>
+                    <span>Aug 15, 2026</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-icon">🧑‍🌾</div>
+                <h3>New Subsidy for Drip Irrigation Systems</h3>
+                <p>State government announces 60% subsidy on modern drip irrigation systems. Eligible farmers in semi-arid regions can now access technology with minimal investment.</p>
+                <div class="news-meta">
+                    <span>Subsidy News</span>
+                    <span>Aug 7, 2026</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-icon">🐛</div>
+                <h3>Army Worm Attack Warning for Cotton Farmers</h3>
+                <p>Agricultural experts alert cotton growers about fall armyworm infestation in Maharashtra. Early detection and timely spray can prevent significant losses up to 40%.</p>
+                <div class="news-meta">
+                    <span>Pest Alert</span>
+                    <span>Aug 6, 2026</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-icon">📱</div>
+                <h3>e-NAM Platform: 1 Million Farmers Trading Online</h3>
+                <p>The electronic National Agriculture Market (e-NAM) reaches milestone of 1 million registered farmers. Online auctions have eliminated middlemen for 25% of users.</p>
+                <div class="news-meta">
+                    <span>Digital Initiative</span>
+                    <span>Aug 5, 2026</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- My Information Section -->
     <section class="my-info-section">
-        <h2>Founder & Developer 👨‍💼</h2>
+        <h2 data-i18n="founder-title">Founder & Developer 👨‍💼</h2>
         <div class="my-info-container">
             <div class="profile-card">
                 <div class="profile-photo">
                     <img src="CEOP.png" alt="Profile Photo" class="photo">
                 </div>
                 <div class="profile-details">
-                    <h3>Er. A.K. Ranuot</h3>
-                    <p class="title">Founder & Developer</p>
-                    <p class="subtitle-role">Data Scientist & AI Engineer</p>
-                    <p class="bio">Pursuing B.Tech CSE at SBBS University, Jalandhar. Passionate about developing AI solutions to help farmers increase productivity and sustainability.</p>
+                    <h3 data-i18n="founder-name">Er. A.K. Ranuot</h3>
+                    <p class="title" data-i18n="founder-title-role">Founder & Developer</p>
+                    <p class="subtitle-role" data-i18n="founder-subtitle">Data Scientist & AI Engineer</p>
+                    <p class="bio" data-i18n="founder-bio">Pursuing B.Tech CSE at SBBS University, Jalandhar. Passionate about developing AI solutions to help farmers increase productivity and sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Size & Comparison Section -->
+    <section id="comparison" class="comparison-section">
+        <h2 data-i18n="comparison-title">SmartFarm AI vs Other Farming Apps 📊</h2>
+        <p class="comparison-intro">Compare SmartFarm AI's app size and features with other popular agricultural and mobile applications</p>
+        
+        <!-- Feature Comparison Table -->
+        <div class="feature-comparison-container">
+            <h3 data-i18n="comparison-title">Features Comparison 🎯</h3>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="highlight-green">SmartFarm AI</th>
+                            <th>Kisan Network</th>
+                            <th>ENAM Mandi</th>
+                            <th>Weather App</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">💰 Subsidy & Schemes</td>
+                            <td class="highlight-green">✅ Live Updates</td>
+                            <td>✅ Basic</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">🌾 Crop Recommendation</td>
+                            <td class="highlight-green">✅ AI-Powered</td>
+                            <td>✅ Basic</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">💧 Smart Irrigation</td>
+                            <td class="highlight-green">✅ Real-time</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">🐛 Disease Detection</td>
+                            <td class="highlight-green">✅ Computer Vision</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">📊 Yield Prediction</td>
+                            <td class="highlight-green">✅ ML Model</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">💹 Market Price Forecast</td>
+                            <td class="highlight-green">✅ AI Prediction</td>
+                            <td>✅ Live Rates</td>
+                            <td>✅ Mandi Prices</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">🌦️ Weather Prediction</td>
+                            <td class="highlight-green">✅ Alerts</td>
+                            <td>✅ Basic</td>
+                            <td>❌</td>
+                            <td>✅ Detailed</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">📱 Offline Mode</td>
+                            <td class="highlight-green">✅ Works Offline</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">🔒 Data Security</td>
+                            <td class="highlight-green">✅ End-to-End Encrypted</td>
+                            <td>✅ Basic</td>
+                            <td>✅ Secure</td>
+                            <td>✅ Secure</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">💵 Cost</td>
+                            <td class="highlight-green">💚 FREE</td>
+                            <td>💚 FREE</td>
+                            <td>💚 FREE</td>
+                            <td>💚 FREE (Ads)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Why SmartFarm AI is Lightweight and Efficient -->
+        <div class="efficiency-container">
+            <h3 data-i18n="efficiency-title">Why SmartFarm AI is Lightweight? ⚡</h3>
+            <div class="efficiency-grid">
+                <div class="efficiency-card">
+                    <div class="efficiency-icon">📦</div>
+                    <h4 data-i18n="efficiency-code">Optimized Code</h4>
+                    <p data-i18n="efficiency-code-desc">Clean, efficient code without unnecessary bloat. Only essential features are included.</p>
+                </div>
+                <div class="efficiency-card">
+                    <div class="efficiency-icon">🖼️</div>
+                    <h4 data-i18n="efficiency-assets">Compressed Assets</h4>
+                    <p data-i18n="efficiency-assets-desc">Images and media are optimized for low-bandwidth areas. Smart caching system.</p>
+                </div>
+                <div class="efficiency-card">
+                    <div class="efficiency-icon">⚙️</div>
+                    <h4 data-i18n="efficiency-loading">Smart Loading</h4>
+                    <p data-i18n="efficiency-loading-desc">Features load progressively. Offline functionality doesn't require full download.</p>
+                </div>
+                <div class="efficiency-card">
+                    <div class="efficiency-icon">📊</div>
+                    <h4 data-i18n="efficiency-tracking">Minimal Tracking</h4>
+                    <p data-i18n="efficiency-tracking-desc">No unnecessary analytics or ads. Privacy-focused design reduces data usage.</p>
                 </div>
             </div>
         </div>
@@ -312,90 +500,90 @@
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-number">50K+</div>
-                <div class="stat-label">Active Farmers</div>
+                <div class="stat-label" data-i18n="stats-farmers">Active Farmers</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">25%</div>
-                <div class="stat-label">Yield Increase</div>
+                <div class="stat-label" data-i18n="stats-yield">Yield Increase</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">40%</div>
-                <div class="stat-label">Water Saved</div>
+                <div class="stat-label" data-i18n="stats-water">Water Saved</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">₹2.5L</div>
-                <div class="stat-label">Avg Income Rise</div>
+                <div class="stat-label" data-i18n="stats-income">Avg Income Rise</div>
             </div>
         </div>
     </section>
 
     <!-- How It Works Section -->
     <section class="how-it-works">
-        <h2>How SmartFarm AI Works 🔄</h2>
+        <h2 data-i18n="works-title">How SmartFarm AI Works 🔄</h2>
         <div class="steps-container">
             <div class="step">
                 <div class="step-icon">1️⃣</div>
-                <h3>Data Collection</h3>
-                <p>IoT sensors collect real-time soil, weather & crop data</p>
+                <h3 data-i18n="works-data">Data Collection</h3>
+                <p data-i18n="works-data-desc">IoT sensors collect real-time soil, weather & crop data</p>
             </div>
             <div class="step">
                 <div class="step-icon">2️⃣</div>
-                <h3>AI Analysis</h3>
-                <p>Machine learning models analyze patterns & trends</p>
+                <h3 data-i18n="works-analysis">AI Analysis</h3>
+                <p data-i18n="works-analysis-desc">Machine learning models analyze patterns & trends</p>
             </div>
             <div class="step">
                 <div class="step-icon">3️⃣</div>
-                <h3>Smart Recommendations</h3>
-                <p>Personalized advice for better farming decisions</p>
+                <h3 data-i18n="works-recommendations">Smart Recommendations</h3>
+                <p data-i18n="works-recommendations-desc">Personalized advice for better farming decisions</p>
             </div>
             <div class="step">
                 <div class="step-icon">4️⃣</div>
-                <h3>Better Results</h3>
-                <p>Increased yield, reduced costs, higher profits</p>
+                <h3 data-i18n="works-results">Better Results</h3>
+                <p data-i18n="works-results-desc">Increased yield, reduced costs, higher profits</p>
             </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
     <section class="benefits-section">
-        <h2>Benefits for Farmers 💚</h2>
+        <h2 data-i18n="benefits-title">Benefits for Farmers 💚</h2>
         <div class="benefits-container">
             <div class="benefit-item">
                 <div class="benefit-icon">📈</div>
-                <h3>Increased Yield</h3>
-                <p>Optimize farming practices to get 20-30% more output</p>
+                <h3 data-i18n="benefit-yield">Increased Yield</h3>
+                <p data-i18n="benefit-yield-desc">Optimize farming practices to get 20-30% more output</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">💰</div>
-                <h3>Higher Profit</h3>
-                <p>Reduce costs & improve prices with smart selling</p>
+                <h3 data-i18n="benefit-profit">Higher Profit</h3>
+                <p data-i18n="benefit-profit-desc">Reduce costs & improve prices with smart selling</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">💧</div>
-                <h3>Water Efficiency</h3>
-                <p>Precision irrigation saves up to 40% water</p>
+                <h3 data-i18n="benefit-water">Water Efficiency</h3>
+                <p data-i18n="benefit-water-desc">Precision irrigation saves up to 40% water</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">🌍</div>
-                <h3>Eco-Friendly</h3>
-                <p>Sustainable farming reduces environmental impact</p>
+                <h3 data-i18n="benefit-eco">Eco-Friendly</h3>
+                <p data-i18n="benefit-eco-desc">Sustainable farming reduces environmental impact</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">📱</div>
-                <h3>Easy to Use</h3>
-                <p>Simple app interface works on basic smartphones</p>
+                <h3 data-i18n="benefit-easy">Easy to Use</h3>
+                <p data-i18n="benefit-easy-desc">Simple app interface works on basic smartphones</p>
             </div>
             <div class="benefit-item">
                 <div class="benefit-icon">🛡️</div>
-                <h3>Risk Protection</h3>
-                <p>Weather alerts & disease detection prevent losses</p>
+                <h3 data-i18n="benefit-protection">Risk Protection</h3>
+                <p data-i18n="benefit-protection-desc">Weather alerts & disease detection prevent losses</p>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
-        <h2>Farmer Success Stories 🌟</h2>
+        <h2 data-i18n="testimonials-title">Farmer Success Stories 🌟</h2>
         <div class="testimonials-container">
             <div class="testimonial-card">
                 <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
@@ -426,31 +614,31 @@
 
     <!-- FAQ Section -->
     <section class="faq-section">
-        <h2>Frequently Asked Questions ❓</h2>
+        <h2 data-i18n="faq-title">Frequently Asked Questions ❓</h2>
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question">❓ Is this app free to use?</div>
-                <div class="faq-answer">Yes! SmartFarm AI is completely free for farmers. Government supported initiative.</div>
+                <div class="faq-question" data-i18n="faq-free">❓ Is this app free to use?</div>
+                <div class="faq-answer" data-i18n="faq-free-ans">Yes! SmartFarm AI is completely free for farmers. Government supported initiative.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">❓ Does it work offline?</div>
-                <div class="faq-answer">Yes, the app works in low connectivity areas. Syncs when internet is available.</div>
+                <div class="faq-question" data-i18n="faq-offline">❓ Does it work offline?</div>
+                <div class="faq-answer" data-i18n="faq-offline-ans">Yes, the app works in low connectivity areas. Syncs when internet is available.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">❓ Do I need special equipment?</div>
-                <div class="faq-answer">Optional IoT sensors enhance accuracy, but app works with manual data entry too.</div>
+                <div class="faq-question" data-i18n="faq-equipment">❓ Do I need special equipment?</div>
+                <div class="faq-answer" data-i18n="faq-equipment-ans">Optional IoT sensors enhance accuracy, but app works with manual data entry too.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">❓ Is my data secure?</div>
-                <div class="faq-answer">100% secure. Data encrypted & only used for your farming decisions.</div>
+                <div class="faq-question" data-i18n="faq-security">❓ Is my data secure?</div>
+                <div class="faq-answer" data-i18n="faq-security-ans">100% secure. Data encrypted & only used for your farming decisions.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">❓ In which languages is it available?</div>
-                <div class="faq-answer">Hindi, Punjabi, Gujarati, Tamil, Telugu, Kannada & English.</div>
+                <div class="faq-question" data-i18n="faq-languages">❓ In which languages is it available?</div>
+                <div class="faq-answer" data-i18n="faq-languages-ans">Hindi, Punjabi, Gujarati, Tamil, Telugu, Kannada & English.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">❓ How do I get started?</div>
-                <div class="faq-answer">Download the app, create account, enter your location & farm details. Done!</div>
+                <div class="faq-question" data-i18n="faq-started">❓ How do I get started?</div>
+                <div class="faq-answer" data-i18n="faq-started-ans">Download the app, create account, enter your location & farm details. Done!</div>
             </div>
         </div>
     </section>
@@ -458,51 +646,11 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content">
-            <h2>Ready to Transform Your Farming?</h2>
-            <p>Join thousands of farmers already benefiting from AI-powered decisions</p>
+            <h2 data-i18n="cta-title">Ready to Transform Your Farming?</h2>
+            <p data-i18n="cta-desc">Join thousands of farmers already benefiting from AI-powered decisions</p>
             <div class="cta-buttons">
-                <button class="cta-btn-primary">Download App Now</button>
-                <button class="cta-btn-secondary">Watch Demo Video</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="compare-section">
-        <h2>Why SmartFarm AI is Different</h2>
-        <p class="compare-intro">Not all agricultural tools are built for small and medium farmers. SmartFarm AI combines local subsidy support, live news, and intelligent farming advice in one easy app.</p>
-        <div class="compare-grid">
-            <div class="compare-card compare-card-feature">
-                <h3>Built for Indian Farmers</h3>
-                <p>Local scheme details, subsidy alerts, and mandi price insights help Indian farmers make better decisions.</p>
-            </div>
-            <div class="compare-card compare-card-feature">
-                <h3>AI + Practical Advice</h3>
-                <p>Real-time crop recommendation, disease detection, and irrigation guidance are tailored by soil, weather, and crop type.</p>
-            </div>
-            <div class="compare-card compare-card-feature">
-                <h3>One App, Multiple Needs</h3>
-                <p>Crop planning, irrigation, market forecasting, and government support are all available from the same dashboard.</p>
-            </div>
-        </div>
-        <div class="compare-details">
-            <div class="compare-details-left">
-                <h3>Other Farming Apps</h3>
-                <ul>
-                    <li>Often focus on a single feature like weather or market rates</li>
-                    <li>May not include government subsidy or scheme updates</li>
-                    <li>Can be too generic for farmer-specific decisions</li>
-                    <li>Often require multiple apps or tools to cover basic needs</li>
-                </ul>
-            </div>
-            <div class="compare-details-right">
-                <h3>SmartFarm AI</h3>
-                <ul>
-                    <li>AI-driven recommendations for crop, irrigation, and yield planning</li>
-                    <li>Live farmer news, subsidy alerts, and policy updates</li>
-                    <li>Designed to support smallholders with local schemes and practical advice</li>
-                    <li>Single platform for weather, pests, market price, and scheme management</li>
-                </ul>
+                <button class="cta-btn-primary" data-i18n="cta-download">Download App Now</button>
+                <button class="cta-btn-secondary" data-i18n="cta-video">Watch Demo Video</button>
             </div>
         </div>
     </section>
@@ -511,8 +659,8 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>SmartFarm AI</h4>
-                <p>Empowering farmers with AI-driven decisions</p>
+                <h4 data-i18n="footer-company">SmartFarm AI</h4>
+                <p data-i18n="footer-desc">Empowering farmers with AI-driven decisions</p>
                 <div class="social-links">
                     <a href="#" class="social-icon">📱</a>
                     <a href="#" class="social-icon">🐦</a>
@@ -520,25 +668,25 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h4>Quick Links</h4>
+                <h4 data-i18n="footer-quick">Quick Links</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#schemes">Schemes</a></li>
+                    <li><a href="#home" data-i18n="nav-home">Home</a></li>
+                    <li><a href="#features" data-i18n="nav-features">Features</a></li>
+                    <li><a href="#demo" data-i18n="nav-demo">Demo</a></li>
+                    <li><a href="#schemes" data-i18n="nav-schemes">Schemes</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Support</h4>
+                <h4 data-i18n="footer-support">Support</h4>
                 <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#" data-i18n="footer-help">Help Center</a></li>
+                    <li><a href="#" data-i18n="footer-contact">Contact Us</a></li>
+                    <li><a href="#" data-i18n="footer-privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="footer-terms">Terms & Conditions</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Government Schemes</h4>
+                <h4 data-i18n="footer-schemes">Government Schemes</h4>
                 <ul>
                     <li><a href="#">PM-KISAN</a></li>
                     <li><a href="#">Fasal Bima</a></li>
@@ -548,8 +696,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 SmartFarm AI |  Designed & Developed by Aman Kumar Ranout🌾</p>
-            <p>Made with 💚 for Indian Farmers</p>
+            <p data-i18n="footer-copyright">&copy; 2026 SmartFarm AI |  Designed & Developed by Aman Kumar Ranout🌾</p>
+            <p data-i18n="footer-made">Made with 💚 for Indian Farmers</p>
         </div>
     </footer>
 
