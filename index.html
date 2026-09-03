@@ -12,7 +12,7 @@
         <div class="nav-container">
             <div class="logo">
                 <span class="logo-icon">🌱</span>
-                <span class="logo-text">SmartFarm AI</span>
+                <span class="logo-text">AR SmartFarm</span>
             </div>
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
@@ -36,9 +36,17 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="farm-background" aria-hidden="true">
+            <div class="farm-sun"></div>
+            <div class="farm-cloud farm-cloud-one"></div>
+            <div class="farm-cloud farm-cloud-two"></div>
+            <div class="farm-hills"></div>
+            <div class="farm-field farm-field-back"></div>
+            <div class="farm-field farm-field-front"></div>
+        </div>
         <div class="hero-content">
             <h1 data-i18n="hero-title">Smart Farming, Smart Earnings 🌾</h1>
-            <p data-i18n="hero-subtitle">From Soil to Sale – Powered by AI</p>
+            <p data-i18n="hero-subtitle">From Soil to Sale – Powered by AR SmartFarm</p>
             <p class="subtitle" data-i18n="hero-desc">Complete guidance from Sowing → Growing → Harvesting → Selling</p>
             <button class="cta-btn" onclick="scrollToDemo()" data-i18n="hero-btn">Start Demo</button>
         </div>
@@ -125,7 +133,7 @@
                     <button type="button" class="demo-btn" onclick="getRecommendation()">Get Recommendation</button>
                 </form>
                 <div id="cropResult" class="result-box hidden">
-                    <p><strong>Recommended Crop:</strong> <span id="recommendedCrop"></span></p>
+                    <p><strong data-i18n="result-recommended-crop">Recommended Crop:</strong> <span id="recommendedCrop"></span></p>
                 </div>
             </div>
 
@@ -145,8 +153,8 @@
                     <button type="button" class="demo-btn" onclick="getIrrigationAdvice()">Check Irrigation Status</button>
                 </form>
                 <div id="irrigationResult" class="result-box hidden">
-                    <p><strong>Status:</strong> <span id="irrigationStatus"></span></p>
-                    <p><strong>Water Recommendation:</strong> <span id="waterAdvice"></span></p>
+                    <p><strong data-i18n="result-status">Status:</strong> <span id="irrigationStatus"></span></p>
+                    <p><strong data-i18n="result-water-recommendation">Water Recommendation:</strong> <span id="waterAdvice"></span></p>
                 </div>
             </div>
 
@@ -198,8 +206,8 @@
                     <button type="button" class="demo-btn" onclick="detectDisease()">Analyze Crop</button>
                 </form>
                 <div id="diseaseResult" class="result-box hidden">
-                    <p><strong>Detection Result:</strong> <span id="diseaseStatus"></span></p>
-                    <p><strong>Suggested Treatment:</strong> <span id="treatmentAdvice"></span></p>
+                    <p><strong data-i18n="result-detection">Detection Result:</strong> <span id="diseaseStatus"></span></p>
+                    <p><strong data-i18n="result-treatment">Suggested Treatment:</strong> <span id="treatmentAdvice"></span></p>
                 </div>
             </div>
 
@@ -222,8 +230,8 @@
                     <button type="button" class="demo-btn" onclick="predictYield()">Predict Yield</button>
                 </form>
                 <div id="yieldResult" class="result-box hidden">
-                    <p><strong>Expected Yield:</strong> <span id="predictedYield"></span></p>
-                    <p><strong>Quality Grade:</strong> <span id="yieldQuality"></span></p>
+                    <p><strong data-i18n="result-expected-yield">Expected Yield:</strong> <span id="predictedYield"></span></p>
+                    <p><strong data-i18n="result-quality">Quality Grade:</strong> <span id="yieldQuality"></span></p>
                 </div>
             </div>
 
@@ -253,9 +261,9 @@
                     <button type="button" class="demo-btn" onclick="getPriceData()">Get Price Forecast</button>
                 </form>
                 <div id="priceResult" class="result-box hidden">
-                    <p><strong>Current Price:</strong> <span id="currentPrice"></span> per quintal</p>
-                    <p><strong>Best Time to Sell:</strong> <span id="bestTimeToSell"></span></p>
-                    <p><strong>Price Trend:</strong> <span id="priceTrend"></span></p>
+                    <p><strong data-i18n="result-current-price">Current Price:</strong> <span id="currentPrice"></span> <span data-i18n="result-per-quintal">per quintal</span></p>
+                    <p><strong data-i18n="result-best-time">Best Time to Sell:</strong> <span id="bestTimeToSell"></span></p>
+                    <p><strong data-i18n="result-price-trend">Price Trend:</strong> <span id="priceTrend"></span></p>
                 </div>
             </div>
         </div>

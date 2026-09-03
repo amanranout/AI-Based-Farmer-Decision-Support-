@@ -420,6 +420,95 @@ const translations = {
 // Current Language
 let currentLanguage = localStorage.getItem('language') || 'en';
 
+const resultTranslations = {
+    en: {
+        'result-recommended-crop': 'Recommended Crop:',
+        'result-status': 'Status:',
+        'result-water-recommendation': 'Water Recommendation:',
+        'result-detection': 'Detection Result:',
+        'result-treatment': 'Suggested Treatment:',
+        'result-expected-yield': 'Expected Yield:',
+        'result-quality': 'Quality Grade:',
+        'result-current-price': 'Current Price:',
+        'result-per-quintal': 'per quintal',
+        'result-best-time': 'Best Time to Sell:',
+        'result-price-trend': 'Price Trend:',
+        'crop-multi': 'Multi-crop farming recommended',
+        'crop-rice': 'Rice - High yield potential',
+        'crop-wheat': 'Wheat - Water efficient crop',
+        'crop-millet': 'Millet - Drought resistant',
+        'crop-sugarcane': 'Sugarcane - Good rainfall area',
+        'irrigation-normal': 'Normal',
+        'irrigation-regular': 'Continue regular watering',
+        'irrigation-urgent': 'URGENT - Water required immediately',
+        'irrigation-urgent-advice': 'Irrigate within 24 hours. Recommended: 40-50mm',
+        'irrigation-low': 'Low moisture detected',
+        'irrigation-low-advice': 'Schedule irrigation for next 2-3 days. Recommended: 25-30mm',
+        'irrigation-sufficient': 'Moisture sufficient - Skip irrigation',
+        'irrigation-sufficient-advice': 'Monitor for waterlogging. Wait 3-4 days before watering',
+        'irrigation-hot': ' (High temp - increase frequency)',
+        'yield-unit': 'quintals',
+        'yield-acre': 'per acre',
+        'quality-average': 'Average',
+        'quality-organic': 'Good (Organic)',
+        'quality-good': 'Good',
+        'quality-high': 'High Yield',
+        'price-upward': 'Upward',
+        'price-downward': 'Downward',
+        'price-stable': 'Stable',
+        'price-2-3-weeks': 'In 2-3 weeks',
+        'price-1-2-weeks': 'In 1-2 weeks',
+        'price-wait-harvest': 'Wait for harvest',
+        'price-immediate': 'Sell immediately',
+        'price-1-week': 'Sell in 1 week'
+    },
+    hi: {
+        'result-recommended-crop': 'अनुशंसित फसल:',
+        'result-status': 'स्थिति:',
+        'result-water-recommendation': 'पानी की सलाह:',
+        'result-detection': 'पहचान का परिणाम:',
+        'result-treatment': 'सुझाया गया उपचार:',
+        'result-expected-yield': 'अनुमानित उपज:',
+        'result-quality': 'गुणवत्ता श्रेणी:',
+        'result-current-price': 'वर्तमान कीमत:',
+        'result-per-quintal': 'प्रति क्विंटल',
+        'result-best-time': 'बेचने का सही समय:',
+        'result-price-trend': 'कीमत का रुझान:',
+        'crop-multi': 'मिश्रित फसल खेती की सलाह',
+        'crop-rice': 'चावल - अधिक उपज की संभावना',
+        'crop-wheat': 'गेहूं - कम पानी वाली फसल',
+        'crop-millet': 'बाजरा - सूखा प्रतिरोधी',
+        'crop-sugarcane': 'गन्ना - अच्छी वर्षा वाला क्षेत्र',
+        'irrigation-normal': 'सामान्य',
+        'irrigation-regular': 'नियमित रूप से पानी देते रहें',
+        'irrigation-urgent': 'अति आवश्यक - तुरंत पानी दें',
+        'irrigation-urgent-advice': '24 घंटे के भीतर सिंचाई करें। सुझाई गई मात्रा: 40-50 मिमी',
+        'irrigation-low': 'नमी कम है',
+        'irrigation-low-advice': 'अगले 2-3 दिनों में सिंचाई करें। सुझाई गई मात्रा: 25-30 मिमी',
+        'irrigation-sufficient': 'नमी पर्याप्त है - सिंचाई छोड़ दें',
+        'irrigation-sufficient-advice': 'जलभराव पर नजर रखें। पानी देने से पहले 3-4 दिन प्रतीक्षा करें',
+        'irrigation-hot': ' (अधिक तापमान - आवृत्ति बढ़ाएं)',
+        'yield-unit': 'क्विंटल',
+        'yield-acre': 'प्रति एकड़',
+        'quality-average': 'औसत',
+        'quality-organic': 'अच्छा (जैविक)',
+        'quality-good': 'अच्छा',
+        'quality-high': 'उच्च उपज',
+        'price-upward': 'बढ़ता हुआ',
+        'price-downward': 'गिरता हुआ',
+        'price-stable': 'स्थिर',
+        'price-2-3-weeks': '2-3 सप्ताह में',
+        'price-1-2-weeks': '1-2 सप्ताह में',
+        'price-wait-harvest': 'कटाई तक प्रतीक्षा करें',
+        'price-immediate': 'तुरंत बेचें',
+        'price-1-week': '1 सप्ताह में बेचें'
+    }
+};
+
+function resultText(key) {
+    return resultTranslations[currentLanguage][key] || resultTranslations.en[key] || key;
+}
+
 // Change Language Function
 function changeLanguage(lang) {
     currentLanguage = lang;
@@ -431,6 +520,7 @@ function changeLanguage(lang) {
     
     // Translate all elements
     translatePage();
+    refreshVisibleResults();
 }
 
 // Translate Page Function
@@ -438,10 +528,43 @@ function translatePage() {
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[currentLanguage][key]) {
-            element.textContent = translations[currentLanguage][key];
+        const translation = translations[currentLanguage][key] || resultTranslations[currentLanguage][key];
+        if (translation) {
+            element.textContent = translation;
         }
     });
+}
+
+function refreshVisibleResults() {
+    const cropResult = document.getElementById('cropResult');
+    if (cropResult && !cropResult.classList.contains('hidden') && document.getElementById('soilType').value && document.getElementById('temperature').value && document.getElementById('rainfall').value) {
+        getRecommendation();
+    }
+
+    const irrigationResult = document.getElementById('irrigationResult');
+    if (irrigationResult && !irrigationResult.classList.contains('hidden')) {
+        getIrrigationAdvice();
+    }
+
+    const weatherResult = document.getElementById('weatherResult');
+    if (weatherResult && !weatherResult.classList.contains('hidden') && document.getElementById('region').value) {
+        getWeatherAlerts();
+    }
+
+    const diseaseResult = document.getElementById('diseaseResult');
+    if (diseaseResult && !diseaseResult.classList.contains('hidden')) {
+        detectDisease();
+    }
+
+    const yieldResult = document.getElementById('yieldResult');
+    if (yieldResult && !yieldResult.classList.contains('hidden') && document.getElementById('yieldCrop').value && document.getElementById('landArea').value && document.getElementById('fertilizerUsed').value) {
+        predictYield();
+    }
+
+    const priceResult = document.getElementById('priceResult');
+    if (priceResult && !priceResult.classList.contains('hidden') && document.getElementById('priceaCrop').value && document.getElementById('mandi').value) {
+        getPriceData();
+    }
 }
 
 // Initialize Language
@@ -510,18 +633,18 @@ function getRecommendation() {
         return;
     }
 
-    let recommendation = 'Multi-crop farming recommended';
+    let recommendationKey = 'crop-multi';
     if (temperature > 30 && rainfall > 1000) {
-        recommendation = 'Rice - High yield potential';
+        recommendationKey = 'crop-rice';
     } else if (temperature > 25 && rainfall < 600) {
-        recommendation = 'Wheat - Water efficient crop';
+        recommendationKey = 'crop-wheat';
     } else if (temperature > 35 && rainfall < 400) {
-        recommendation = 'Millet - Drought resistant';
+        recommendationKey = 'crop-millet';
     } else if (rainfall > 800) {
-        recommendation = 'Sugarcane - Good rainfall area';
+        recommendationKey = 'crop-sugarcane';
     }
 
-    document.getElementById('recommendedCrop').textContent = recommendation;
+    document.getElementById('recommendedCrop').textContent = resultText(recommendationKey);
     document.getElementById('cropResult').classList.remove('hidden');
 }
 
@@ -533,22 +656,22 @@ function getIrrigationAdvice() {
     const moisture = parseInt(document.getElementById('moistureLevel').value);
     const temp = parseFloat(document.getElementById('cropTemp').value);
     
-    let status = 'Normal';
-    let advice = 'Continue regular watering';
+    let status = resultText('irrigation-normal');
+    let advice = resultText('irrigation-regular');
     
     if (moisture < 30) {
-        status = '⚠️ URGENT - Water required immediately';
-        advice = 'Irrigate within 24 hours. Recommended: 40-50mm';
+        status = '⚠️ ' + resultText('irrigation-urgent');
+        advice = resultText('irrigation-urgent-advice');
     } else if (moisture < 50) {
-        status = '⚠️ Low moisture detected';
-        advice = 'Schedule irrigation for next 2-3 days. Recommended: 25-30mm';
+        status = '⚠️ ' + resultText('irrigation-low');
+        advice = resultText('irrigation-low-advice');
     } else if (moisture > 70) {
-        status = 'Moisture sufficient - Skip irrigation';
-        advice = 'Monitor for waterlogging. Wait 3-4 days before watering';
+        status = resultText('irrigation-sufficient');
+        advice = resultText('irrigation-sufficient-advice');
     }
     
     if (temp > 35) {
-        advice += ' (High temp - increase frequency)';
+        advice += resultText('irrigation-hot');
     }
     
     document.getElementById('irrigationStatus').textContent = status;
@@ -559,7 +682,7 @@ function getIrrigationAdvice() {
 function getWeatherAlerts() {
     const region = document.getElementById('region').value;
     
-    const alerts = {
+    const englishAlerts = {
         'north': `<p>🌡️ <strong>Temperature Alert:</strong> High wind speed (20-25 km/h) expected. Protect crops from damage.</p>
                   <p>☔ <strong>Rainfall:</strong> Light showers in 2-3 days. Good for irrigation planning.</p>
                   <p>⚠️ <strong>Advisory:</strong> Frost warning for early morning. Protect tender plants.</p>`,
@@ -573,8 +696,24 @@ function getWeatherAlerts() {
                  <p>💨 <strong>Dry Wind:</strong> High evaporation rate expected.</p>
                  <p>⚠️ <strong>Advisory:</strong> Mulch fields to retain moisture. Monitor for heat stress.</p>`
     };
+
+    const hindiAlerts = {
+        'north': `<p>🌡️ <strong>तापमान सतर्कता:</strong> तेज हवा (20-25 किमी/घंटा) चलने की संभावना है। फसलों को नुकसान से बचाएं।</p>
+                  <p>☔ <strong>वर्षा:</strong> 2-3 दिनों में हल्की बारिश। सिंचाई की योजना के लिए उपयुक्त।</p>
+                  <p>⚠️ <strong>सलाह:</strong> सुबह पाले की चेतावनी। नाजुक पौधों की रक्षा करें।</p>`,
+        'south': `<p>☔ <strong>मानसून सतर्कता:</strong> अगले 24-48 घंटों में भारी बारिश की संभावना।</p>
+                  <p>💨 <strong>हवा:</strong> मध्यम हवा (15 किमी/घंटा)। कोई बड़ा खतरा नहीं।</p>
+                  <p>⚠️ <strong>सलाह:</strong> उचित जल निकासी सुनिश्चित करें। जलभराव का खतरा है।</p>`,
+        'east': `<p>🌪️ <strong>तूफान चेतावनी:</strong> शाम तक आंधी आने की संभावना। ढीली वस्तुओं को सुरक्षित करें।</p>
+                 <p>☔ <strong>वर्षा:</strong> अगले 3 दिनों में मध्यम से भारी बारिश।</p>
+                 <p>⚠️ <strong>सलाह:</strong> तूफान के दौरान खेत में काम न करें। पशुओं के लिए आश्रय तैयार करें।</p>`,
+        'west': `<p>🌞 <strong>लू की सतर्कता:</strong> तापमान 42-44°C तक पहुंच सकता है। सिंचाई बढ़ाएं।</p>
+                 <p>💨 <strong>सूखी हवा:</strong> वाष्पीकरण की दर अधिक रहने की संभावना।</p>
+                 <p>⚠️ <strong>सलाह:</strong> नमी बनाए रखने के लिए खेतों में मल्च डालें। गर्मी के तनाव पर नजर रखें।</p>`
+    };
     
-    document.getElementById('weatherContent').innerHTML = alerts[region] || 'Weather data unavailable';
+    const alerts = currentLanguage === 'hi' ? hindiAlerts : englishAlerts;
+    document.getElementById('weatherContent').innerHTML = alerts[region] || (currentLanguage === 'hi' ? 'मौसम की जानकारी उपलब्ध नहीं है' : 'Weather data unavailable');
     document.getElementById('weatherResult').classList.remove('hidden');
 }
 
@@ -596,14 +735,30 @@ function detectDisease() {
             'wilting': { status: '🔴 Serious - Blast disease suspected', treatment: 'Apply Tricyclazole immediately. Reduce nitrogen fertilizer.' }
         }
     };
+
+    const hindiDiseases = {
+        'wheat': {
+            'healthy': { status: '✅ कोई रोग नहीं मिला', treatment: 'नियमित देखभाल और निगरानी जारी रखें।' },
+            'yellowing': { status: '⚠️ पीला रतुआ संक्रमण संभव', treatment: 'फफूंदनाशक का छिड़काव करें। प्रोपिकोनाजोल या हेक्साकोनाजोल का उपयोग करें।' },
+            'spots': { status: '⚠️ सेप्टोरिया पत्ती धब्बा संभव', treatment: 'तुरंत मैंकोजेब या कार्बेन्डाजिम का छिड़काव करें।' },
+            'wilting': { status: '🔴 गंभीर - जड़ सड़न की आशंका', treatment: 'जल निकासी सुधारें और पानी कम करें। तुरंत कृषि विशेषज्ञ से संपर्क करें।' }
+        },
+        'rice': {
+            'healthy': { status: '✅ कोई रोग नहीं मिला', treatment: 'उचित जल स्तर और पोषक प्रबंधन बनाए रखें।' },
+            'yellowing': { status: '⚠️ पोषक तत्वों की कमी (लोहा) संभव', treatment: 'आयरन सल्फेट या चिलेटेड आयरन घोल डालें।' },
+            'spots': { status: '⚠️ भूरा पत्ती धब्बा संभव', treatment: 'ट्राइकोडर्मा या स्यूडोमोनास घोल का छिड़काव करें।' },
+            'wilting': { status: '🔴 गंभीर - झुलसा रोग की आशंका', treatment: 'तुरंत ट्राइसाइक्लाजोल डालें। नाइट्रोजन उर्वरक कम करें।' }
+        }
+    };
     
-    if (diseases[cropType] && diseases[cropType][leafCondition]) {
-        const disease = diseases[cropType][leafCondition];
+    const diseaseData = currentLanguage === 'hi' ? hindiDiseases : diseases;
+    if (diseaseData[cropType] && diseaseData[cropType][leafCondition]) {
+        const disease = diseaseData[cropType][leafCondition];
         document.getElementById('diseaseStatus').textContent = disease.status;
         document.getElementById('treatmentAdvice').textContent = disease.treatment;
     } else {
-        document.getElementById('diseaseStatus').textContent = 'Unable to determine disease';
-        document.getElementById('treatmentAdvice').textContent = 'Please consult with a plant pathologist.';
+        document.getElementById('diseaseStatus').textContent = currentLanguage === 'hi' ? 'रोग का पता नहीं लगाया जा सका' : 'Unable to determine disease';
+        document.getElementById('treatmentAdvice').textContent = currentLanguage === 'hi' ? 'कृपया पौधा रोग विशेषज्ञ से सलाह लें।' : 'Please consult with a plant pathologist.';
     }
     
     document.getElementById('diseaseResult').classList.remove('hidden');
@@ -632,8 +787,8 @@ function predictYield() {
     
     const totalYield = (yieldPerAcre * area).toFixed(2);
     
-    document.getElementById('predictedYield').textContent = totalYield + ' quintals (' + yieldPerAcre.toFixed(1) + ' per acre)';
-    document.getElementById('yieldQuality').textContent = quality;
+    document.getElementById('predictedYield').textContent = totalYield + ' ' + resultText('yield-unit') + ' (' + yieldPerAcre.toFixed(1) + ' ' + resultText('yield-acre') + ')';
+    document.getElementById('yieldQuality').textContent = resultText(quality === 'Average' ? 'quality-average' : quality === 'Good (Organic)' ? 'quality-organic' : quality === 'Good' ? 'quality-good' : 'quality-high');
     document.getElementById('yieldResult').classList.remove('hidden');
 }
 
@@ -649,12 +804,25 @@ function getPriceData() {
                   'punjab': { current: 3100, trend: '📉 Downward', time: 'Sell in 1 week' },
                   'gujarati': { current: 3300, trend: '📈 Upward', time: 'Wait 1-2 weeks' } }
     };
+
+    const priceTextKeys = {
+        '📈 Upward': 'price-upward',
+        '📉 Downward': 'price-downward',
+        '➡️ Stable': 'price-stable',
+        'In 2-3 weeks': 'price-2-3-weeks',
+        'In 1-2 weeks': 'price-1-2-weeks',
+        'Wait for harvest': 'price-wait-harvest',
+        'Sell immediately': 'price-immediate',
+        'Sell in 1 week': 'price-1-week',
+        'Wait 1-2 weeks': 'price-1-2-weeks'
+    };
     
     if (prices[crop] && prices[crop][mandi]) {
         const price = prices[crop][mandi];
         document.getElementById('currentPrice').textContent = '₹' + price.current;
-        document.getElementById('priceTrend').textContent = price.trend;
-        document.getElementById('bestTimeToSell').textContent = price.time;
+        const trendIcon = price.trend.startsWith('📈') ? '📈 ' : price.trend.startsWith('📉') ? '📉 ' : '➡️ ';
+        document.getElementById('priceTrend').textContent = trendIcon + resultText(priceTextKeys[price.trend]);
+        document.getElementById('bestTimeToSell').textContent = resultText(priceTextKeys[price.time]);
     }
     
     document.getElementById('priceResult').classList.remove('hidden');
