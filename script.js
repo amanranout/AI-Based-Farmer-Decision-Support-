@@ -456,6 +456,25 @@ window.addEventListener('DOMContentLoaded', function() {
         fetchLiveNews();
     }
     initLanguage();
+
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 });
 
 // ===== SMOOTH SCROLLING AND NAVIGATION =====

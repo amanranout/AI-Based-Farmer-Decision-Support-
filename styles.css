@@ -66,6 +66,33 @@ body {
     gap: 3rem;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 .nav-link {
     color: white;
     text-decoration: none;
@@ -1031,6 +1058,191 @@ body {
 
     .demo-btn {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .navbar {
+        padding: 0.8rem 0;
+    }
+
+    .nav-container {
+        position: relative;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        min-width: 0;
+        gap: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .logo-icon {
+        font-size: 1.7rem;
+    }
+
+    .logo-text {
+        white-space: nowrap;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        flex: 0 0 auto;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        right: 1rem;
+        width: min(280px, calc(100vw - 2rem));
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0.75rem;
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        border-radius: 10px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        transform: translateY(-8px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-menu li,
+    .nav-link,
+    .language-selector {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .language-selector {
+        margin-top: 0.25rem;
+    }
+
+    .hero {
+        padding: 3rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .hero-content,
+    .hero-image {
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+        overflow-wrap: anywhere;
+    }
+
+    .hero-illustration {
+        font-size: clamp(6rem, 28vw, 9rem);
+    }
+
+    .features,
+    .demo-section,
+    .my-info-section,
+    .comparison-section {
+        margin: 3rem auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .schemes-section {
+        margin: 3rem 0;
+        padding: 3rem 1rem;
+    }
+
+    .features-grid,
+    .demo-container,
+    .schemes-grid,
+    .news-grid,
+    .efficiency-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .feature-card,
+    .demo-card,
+    .scheme-card,
+    .news-card,
+    .size-comparison-container,
+    .feature-comparison-container,
+    .efficiency-container,
+    .profile-card {
+        padding: 1.25rem;
+        min-width: 0;
+    }
+
+    .form-group input,
+    .form-group select,
+    .demo-btn,
+    .scheme-btn {
+        max-width: 100%;
+    }
+
+    .comparison-section h2,
+    .features h2,
+    .demo-section h2,
+    .schemes-section h2,
+    .my-info-section h2 {
+        font-size: clamp(1.6rem, 7vw, 2rem);
+        overflow-wrap: anywhere;
+    }
+
+    .comparison-intro {
+        font-size: 0.95rem;
+    }
+
+    .feature-comparison-container {
+        overflow-x: auto;
+    }
+
+    .comparison-table {
+        min-width: 600px;
+    }
+
+    .chart-bar-item {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .bar-label {
+        min-width: 0;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo-text {
+        font-size: 0.95rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.55rem;
+    }
+
+    .profile-details h3 {
+        font-size: 1.35rem;
+        overflow-wrap: anywhere;
     }
 }
 
