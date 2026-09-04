@@ -73,6 +73,21 @@ A unified smart platform that provides:
 ### 🏛️ Government Scheme Integration
 - PM-KISAN, Fasal Bima & more  
 
+### 📰 Live Farmer News
+- Node.js proxy loads live news through `/api/news`
+- Farmer-focused news is filtered in the browser
+- Disaster-management safety advisory remains available when the news service is offline
+
+## ▶️ Run the Live News Demo
+
+Install Node.js 18 or newer, then run from the project folder:
+
+```bash
+npm start
+```
+
+Open `http://localhost:3000` in a browser. The **Refresh Live News** button will use the local Node endpoint and fall back to built-in farmer and disaster-management updates if the upstream news service is unavailable.
+
 ---
 
 ## 🏗️ System Architecture

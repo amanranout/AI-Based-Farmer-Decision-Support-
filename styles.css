@@ -1022,6 +1022,12 @@ body {
     max-width: 100%;
 }
 
+.founder-website-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    text-decoration: none;
+}
+
 .qualifications-card {
     background: white;
     padding: 3rem 2.5rem;

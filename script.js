@@ -1,8 +1,18 @@
 // Live news integration for SmartFarm AI
-const NEWS_API_URL = 'https://inshorts.deta.dev/news?category=all';
+const NEWS_API_URL = window.location.protocol === 'file:'
+    ? 'https://inshorts.deta.dev/news?category=all'
+    : '/api/news';
 const NEWS_KEYWORDS = [
-    'farm', 'farmer', 'agriculture', 'crop', 'soil', 'subsidy', 'market', 'price', 'weather', 'irrigation', 'pesticide', 'harvest', 'scheme', 'govt', 'policy'
+    'farm', 'farmer', 'agriculture', 'crop', 'soil', 'subsidy', 'market', 'price', 'weather', 'irrigation', 'pesticide', 'harvest', 'scheme', 'govt', 'policy', 'flood', 'cyclone', 'drought', 'disaster', 'rescue', 'relief', 'heatwave', 'landslide'
 ];
+
+const DISASTER_MANAGEMENT_ADVISORY = {
+    title: 'Disaster Management Advisory for Farmers',
+    content: 'Before storms, floods, or heatwaves, move livestock to safe shelter, protect farm equipment, keep emergency contacts ready, and follow official local advisories.',
+    source: 'Disaster Management',
+    time: 'Safety Advisory',
+    icon: '🛟'
+};
 
 function fetchLiveNews() {
     const loading = document.getElementById('newsLoading');
@@ -28,7 +38,8 @@ function fetchLiveNews() {
                 return NEWS_KEYWORDS.some(keyword => text.includes(keyword));
             });
 
-            renderLiveNews(filtered.length ? filtered.slice(0, 6) : items.slice(0, 6));
+            const liveItems = filtered.length ? filtered.slice(0, 5) : items.slice(0, 5);
+            renderLiveNews([...liveItems, DISASTER_MANAGEMENT_ADVISORY]);
         })
         .catch(error => {
             console.error('Live news fetch failed:', error);
@@ -54,10 +65,11 @@ function renderLiveNews(articles) {
         const source = article.source || article.author || 'Live News';
         const time = article.date || article.time || '';
         const link = article.readMoreUrl || article.url || '#';
+        const icon = article.icon || '📰';
 
         return `
             <div class="news-card">
-                <div class="news-icon">📰</div>
+            <div class="news-icon">${icon}</div>
                 <h3>${title}</h3>
                 <p>${description}</p>
                 <div class="news-meta">
@@ -96,6 +108,15 @@ function renderNewsFallback() {
             <h3>Weather advisory issued</h3>
             <p>Heavy rainfall warnings are active for eastern regions; prepare drainage and protect crops.</p>
         </div>
+        <div class="news-card disaster-news-card">
+            <div class="news-icon">${DISASTER_MANAGEMENT_ADVISORY.icon}</div>
+            <h3>${DISASTER_MANAGEMENT_ADVISORY.title}</h3>
+            <p>${DISASTER_MANAGEMENT_ADVISORY.content}</p>
+            <div class="news-meta">
+                <span>${DISASTER_MANAGEMENT_ADVISORY.source}</span>
+                <span>${DISASTER_MANAGEMENT_ADVISORY.time}</span>
+            </div>
+        </div>
     `;
 }
 
@@ -110,7 +131,7 @@ const translations = {
         
         // Hero Section
         'hero-title': 'Smart Farming, Smart Earnings 🌾',
-        'hero-subtitle': 'From Soil to Sale – Powered by AI',
+        'hero-subtitle': 'From Soil to Sale – Powered by AR SmartFarm',
         'hero-desc': 'Complete guidance from Sowing → Growing → Harvesting → Selling',
         'hero-btn': 'Start Demo',
         
