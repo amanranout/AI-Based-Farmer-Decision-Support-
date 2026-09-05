@@ -28,6 +28,7 @@
                     <select id="languageSelector" class="language-selector" onchange="changeLanguage(this.value)">
                         <option value="en">English</option>
                         <option value="hi">हिंदी</option>
+                        <option value="pa">ਪੰਜਾਬੀ</option>
                     </select>
                 </li>
             </ul>
@@ -113,24 +114,24 @@
                 <h3 data-i18n="demo-crop">📱 1. Smart Crop Recommendation</h3>
                 <form id="cropForm" class="demo-form">
                     <div class="form-group">
-                        <label>Soil Type:</label>
+                        <label data-i18n="label-soil-type">Soil Type:</label>
                         <select id="soilType" required>
-                            <option value="">Select Soil Type</option>
-                            <option value="loamy">Loamy</option>
-                            <option value="clayey">Clayey</option>
-                            <option value="sandy">Sandy</option>
-                            <option value="black">Black Soil</option>
+                            <option value="" data-i18n="option-select-soil">Select Soil Type</option>
+                            <option value="loamy" data-i18n="option-loamy">Loamy</option>
+                            <option value="clayey" data-i18n="option-clayey">Clayey</option>
+                            <option value="sandy" data-i18n="option-sandy">Sandy</option>
+                            <option value="black" data-i18n="option-black">Black Soil</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Average Temperature (°C):</label>
-                        <input type="number" id="temperature" placeholder="25" min="0" max="50" required>
+                        <label data-i18n="label-temperature">Average Temperature (°C):</label>
+                        <input type="number" id="temperature" placeholder="25" data-i18n-placeholder="placeholder-temperature" min="0" max="50" required>
                     </div>
                     <div class="form-group">
-                        <label>Annual Rainfall (mm):</label>
-                        <input type="number" id="rainfall" placeholder="800" min="0" required>
+                        <label data-i18n="label-rainfall">Annual Rainfall (mm):</label>
+                        <input type="number" id="rainfall" placeholder="800" data-i18n-placeholder="placeholder-rainfall" min="0" required>
                     </div>
-                    <button type="button" class="demo-btn" onclick="getRecommendation()">Get Recommendation</button>
+                    <button type="button" class="demo-btn" onclick="getRecommendation()" data-i18n="button-recommend">Get Recommendation</button>
                 </form>
                 <div id="cropResult" class="result-box hidden">
                     <p><strong data-i18n="result-recommended-crop">Recommended Crop:</strong> <span id="recommendedCrop"></span></p>
@@ -142,15 +143,15 @@
                 <h3 data-i18n="demo-irrigation">💧 2. Smart Irrigation Advisor</h3>
                 <form class="demo-form">
                     <div class="form-group">
-                        <label>Soil Moisture Level (%):</label>
+                        <label data-i18n="label-moisture">Soil Moisture Level (%):</label>
                         <input type="range" id="moistureLevel" min="0" max="100" value="50" oninput="updateMoisture(this.value)">
                         <span id="moistureValue">50%</span>
                     </div>
                     <div class="form-group">
-                        <label>Current Temperature (°C):</label>
-                        <input type="number" id="cropTemp" placeholder="30" min="0" max="50" required>
+                        <label data-i18n="label-current-temperature">Current Temperature (°C):</label>
+                        <input type="number" id="cropTemp" placeholder="30" data-i18n-placeholder="placeholder-temperature-current" min="0" max="50" required>
                     </div>
-                    <button type="button" class="demo-btn" onclick="getIrrigationAdvice()">Check Irrigation Status</button>
+                    <button type="button" class="demo-btn" onclick="getIrrigationAdvice()" data-i18n="button-irrigation">Check Irrigation Status</button>
                 </form>
                 <div id="irrigationResult" class="result-box hidden">
                     <p><strong data-i18n="result-status">Status:</strong> <span id="irrigationStatus"></span></p>
@@ -163,16 +164,16 @@
                 <h3 data-i18n="demo-weather">🌦️ 3. Weather Prediction & Alerts</h3>
                 <form class="demo-form">
                     <div class="form-group">
-                        <label>Select Your Region:</label>
+                        <label data-i18n="label-region">Select Your Region:</label>
                         <select id="region" required>
-                            <option value="">Select Region</option>
-                            <option value="north">North India</option>
-                            <option value="south">South India</option>
-                            <option value="east">East India</option>
-                            <option value="west">West India</option>
+                            <option value="" data-i18n="option-select-region">Select Region</option>
+                            <option value="north" data-i18n="option-north">North India</option>
+                            <option value="south" data-i18n="option-south">South India</option>
+                            <option value="east" data-i18n="option-east">East India</option>
+                            <option value="west" data-i18n="option-west">West India</option>
                         </select>
                     </div>
-                    <button type="button" class="demo-btn" onclick="getWeatherAlerts()">Get Weather Alerts</button>
+                    <button type="button" class="demo-btn" onclick="getWeatherAlerts()" data-i18n="button-weather">Get Weather Alerts</button>
                 </form>
                 <div id="weatherResult" class="result-box hidden">
                     <div id="weatherContent"></div>
@@ -184,26 +185,31 @@
                 <h3 data-i18n="demo-disease">🐛 4. Disease & Pest Detection</h3>
                 <form class="demo-form">
                     <div class="form-group">
-                        <label>Crop Type:</label>
+                        <label data-i18n="label-crop-type">Crop Type:</label>
                         <select id="cropType" required>
-                            <option value="">Select Crop</option>
-                            <option value="wheat">Wheat</option>
-                            <option value="rice">Rice</option>
-                            <option value="cotton">Cotton</option>
-                            <option value="sugarcane">Sugarcane</option>
+                            <option value="" data-i18n="option-select-crop">Select Crop</option>
+                            <option value="wheat" data-i18n="option-wheat">Wheat</option>
+                            <option value="rice" data-i18n="option-rice">Rice</option>
+                            <option value="cotton" data-i18n="option-cotton">Cotton</option>
+                            <option value="sugarcane" data-i18n="option-sugarcane">Sugarcane</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Leaf Condition:</label>
+                        <label data-i18n="label-leaf-condition">Leaf Condition (optional):</label>
                         <select id="leafCondition" required>
-                            <option value="">Select Condition</option>
-                            <option value="healthy">Healthy (Green)</option>
-                            <option value="yellowing">Yellowing Leaves</option>
-                            <option value="spots">Brown Spots</option>
-                            <option value="wilting">Wilting</option>
+                            <option value="" data-i18n="option-select-condition">Select Condition</option>
+                            <option value="healthy" data-i18n="option-healthy">Healthy (Green)</option>
+                            <option value="yellowing" data-i18n="option-yellowing">Yellowing Leaves</option>
+                            <option value="spots" data-i18n="option-spots">Brown Spots</option>
+                            <option value="wilting" data-i18n="option-wilting">Wilting</option>
                         </select>
                     </div>
-                    <button type="button" class="demo-btn" onclick="detectDisease()">Analyze Crop</button>
+                    <div class="form-group">
+                        <label data-i18n="disease-photo-label">Leaf Photo (optional):</label>
+                        <input type="file" id="leafPhoto" accept="image/*" capture="environment" onchange="previewLeafPhoto(event)">
+                        <img id="leafPhotoPreview" class="leaf-photo-preview hidden" alt="Leaf photo preview">
+                    </div>
+                    <button type="button" class="demo-btn" onclick="detectDisease()" data-i18n="button-analyze">Analyze Crop</button>
                 </form>
                 <div id="diseaseResult" class="result-box hidden">
                     <p><strong data-i18n="result-detection">Detection Result:</strong> <span id="diseaseStatus"></span></p>
@@ -216,18 +222,18 @@
                 <h3 data-i18n="demo-yield">📊 5. Yield Prediction</h3>
                 <form class="demo-form">
                     <div class="form-group">
-                        <label>Crop Name:</label>
-                        <input type="text" id="yieldCrop" placeholder="e.g., Wheat" required>
+                        <label data-i18n="label-crop-name">Crop Name:</label>
+                        <input type="text" id="yieldCrop" placeholder="e.g., Wheat" data-i18n-placeholder="placeholder-crop" required>
                     </div>
                     <div class="form-group">
-                        <label>Land Area (Acres):</label>
-                        <input type="number" id="landArea" placeholder="10" min="1" required>
+                        <label data-i18n="label-area">Land Area (Acres):</label>
+                        <input type="number" id="landArea" placeholder="10" data-i18n-placeholder="placeholder-area" min="1" required>
                     </div>
                     <div class="form-group">
-                        <label>Fertilizer Used (kg/acre):</label>
-                        <input type="number" id="fertilizerUsed" placeholder="50" min="0" required>
+                        <label data-i18n="label-fertilizer">Fertilizer Used (kg/acre):</label>
+                        <input type="number" id="fertilizerUsed" placeholder="50" data-i18n-placeholder="placeholder-fertilizer" min="0" required>
                     </div>
-                    <button type="button" class="demo-btn" onclick="predictYield()">Predict Yield</button>
+                    <button type="button" class="demo-btn" onclick="predictYield()" data-i18n="button-yield">Predict Yield</button>
                 </form>
                 <div id="yieldResult" class="result-box hidden">
                     <p><strong data-i18n="result-expected-yield">Expected Yield:</strong> <span id="predictedYield"></span></p>
@@ -240,25 +246,25 @@
                 <h3 data-i18n="demo-price">💰 6. Smart Market Price Prediction</h3>
                 <form class="demo-form">
                     <div class="form-group">
-                        <label>Select Crop:</label>
+                        <label data-i18n="label-market-crop">Select Crop:</label>
                         <select id="priceaCrop" required>
-                            <option value="">Select Crop</option>
-                            <option value="wheat">Wheat</option>
-                            <option value="rice">Rice</option>
-                            <option value="cotton">Cotton</option>
-                            <option value="potato">Potato</option>
+                            <option value="" data-i18n="option-select-crop">Select Crop</option>
+                            <option value="wheat" data-i18n="option-wheat">Wheat</option>
+                            <option value="rice" data-i18n="option-rice">Rice</option>
+                            <option value="cotton" data-i18n="option-cotton">Cotton</option>
+                            <option value="potato" data-i18n="option-potato">Potato</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Mandi (Market):</label>
+                        <label data-i18n="label-mandi">Mandi (Market):</label>
                         <select id="mandi" required>
-                            <option value="">Select Market</option>
-                            <option value="delhi">Delhi Mandi</option>
-                            <option value="punjab">Punjab Mandi</option>
-                            <option value="gujarati">Gujarat Mandi</option>
+                            <option value="" data-i18n="option-select-market">Select Market</option>
+                            <option value="delhi" data-i18n="option-delhi">Delhi Mandi</option>
+                            <option value="punjab" data-i18n="option-punjab">Punjab Mandi</option>
+                            <option value="gujarati" data-i18n="option-gujarat">Gujarat Mandi</option>
                         </select>
                     </div>
-                    <button type="button" class="demo-btn" onclick="getPriceData()">Get Price Forecast</button>
+                    <button type="button" class="demo-btn" onclick="getPriceData()" data-i18n="button-price">Get Price Forecast</button>
                 </form>
                 <div id="priceResult" class="result-box hidden">
                     <p><strong data-i18n="result-current-price">Current Price:</strong> <span id="currentPrice"></span> <span data-i18n="result-per-quintal">per quintal</span></p>

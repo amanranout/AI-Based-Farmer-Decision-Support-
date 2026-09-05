@@ -82,6 +82,7 @@ function renderLiveNews(articles) {
     }).join('');
 
     newsList.innerHTML = cards;
+    translateLegacyText();
     loading.style.display = 'none';
 }
 
@@ -118,6 +119,7 @@ function renderNewsFallback() {
             </div>
         </div>
     `;
+    translateLegacyText();
 }
 
 // ===== LANGUAGE TRANSLATION SYSTEM =====
@@ -526,6 +528,210 @@ const resultTranslations = {
     }
 };
 
+translations.pa = Object.assign({}, translations.en, {
+    'nav-home': 'ਮੁੱਖ ਪੰਨਾ',
+    'nav-features': 'ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ',
+    'nav-demo': 'ਡੈਮੋ',
+    'nav-schemes': 'ਯੋਜਨਾਵਾਂ',
+    'hero-title': 'ਸਮਾਰਟ ਖੇਤੀ, ਸਮਾਰਟ ਕਮਾਈ 🌾',
+    'hero-subtitle': 'ਮਿੱਟੀ ਤੋਂ ਮੰਡੀ ਤੱਕ – AR SmartFarm ਨਾਲ',
+    'hero-btn': 'ਡੈਮੋ ਸ਼ੁਰੂ ਕਰੋ',
+    'features-title': 'ਸਾਡੇ ਸਮਾਰਟ ਮੋਡੀਊਲ',
+    'demo-title': 'ਇੰਟਰਐਕਟਿਵ ਡੈਮੋ',
+    'demo-crop': '1. ਸਮਾਰਟ ਫਸਲ ਸਿਫਾਰਸ਼',
+    'demo-irrigation': '2. ਸਮਾਰਟ ਸਿੰਚਾਈ ਸਲਾਹਕਾਰ',
+    'demo-weather': '3. ਮੌਸਮ ਦੀ ਭਵਿੱਖਬਾਣੀ ਅਤੇ ਚੇਤਾਵਨੀਆਂ',
+    'demo-disease': '4. ਰੋਗ ਅਤੇ ਕੀੜੇ ਦੀ ਪਛਾਣ',
+    'demo-yield': '5. ਪੈਦਾਵਾਰ ਦੀ ਭਵਿੱਖਬਾਣੀ',
+    'demo-price': '6. ਸਮਾਰਟ ਮੰਡੀ ਭਾਅ ਦੀ ਭਵਿੱਖਬਾਣੀ',
+    'feature-crop': 'ਸਮਾਰਟ ਫਸਲ ਸਿਫਾਰਸ਼',
+    'feature-irrigation': 'ਸਮਾਰਟ ਸਿੰਚਾਈ ਪ੍ਰਣਾਲੀ',
+    'feature-weather': 'ਮੌਸਮ ਦੀ ਜਾਣਕਾਰੀ ਅਤੇ ਚੇਤਾਵਨੀਆਂ',
+    'feature-disease': 'ਰੋਗ ਅਤੇ ਕੀੜੇ ਦੀ ਪਛਾਣ',
+    'feature-yield': 'ਪੈਦਾਵਾਰ ਦੀ ਭਵਿੱਖਬਾਣੀ',
+    'feature-price': 'ਮੰਡੀ ਭਾਅ ਦੀ ਭਵਿੱਖਬਾਣੀ',
+    'disease-photo-label': 'ਪੱਤੇ ਦੀ ਤਸਵੀਰ (ਵਿਕਲਪਿਕ):',
+    'refresh-news': 'ਲਾਈਵ ਖ਼ਬਰਾਂ ਤਾਜ਼ਾ ਕਰੋ',
+    'label-soil-type': 'ਮਿੱਟੀ ਦੀ ਕਿਸਮ:',
+    'option-select-soil': 'ਮਿੱਟੀ ਦੀ ਕਿਸਮ ਚੁਣੋ',
+    'option-loamy': 'ਦੋਮਟ ਮਿੱਟੀ',
+    'option-clayey': 'ਚੀਕਣੀ ਮਿੱਟੀ',
+    'option-sandy': 'ਰੇਤਲੀ ਮਿੱਟੀ',
+    'option-black': 'ਕਾਲੀ ਮਿੱਟੀ',
+    'label-temperature': 'ਔਸਤ ਤਾਪਮਾਨ (°C):',
+    'label-rainfall': 'ਸਾਲਾਨਾ ਵਰਖਾ (ਮਿ.ਮੀ.):',
+    'button-recommend': 'ਸਿਫਾਰਸ਼ ਲਵੋ',
+    'label-moisture': 'ਮਿੱਟੀ ਦੀ ਨਮੀ (%):',
+    'label-current-temperature': 'ਮੌਜੂਦਾ ਤਾਪਮਾਨ (°C):',
+    'button-irrigation': 'ਸਿੰਚਾਈ ਦੀ ਸਥਿਤੀ ਜਾਂਚੋ',
+    'label-region': 'ਆਪਣਾ ਖੇਤਰ ਚੁਣੋ:',
+    'option-select-region': 'ਖੇਤਰ ਚੁਣੋ',
+    'option-north': 'ਉੱਤਰੀ ਭਾਰਤ',
+    'option-south': 'ਦੱਖਣੀ ਭਾਰਤ',
+    'option-east': 'ਪੂਰਬੀ ਭਾਰਤ',
+    'option-west': 'ਪੱਛਮੀ ਭਾਰਤ',
+    'button-weather': 'ਮੌਸਮ ਦੀ ਚੇਤਾਵਨੀ ਲਵੋ',
+    'label-crop-type': 'ਫਸਲ ਦੀ ਕਿਸਮ:',
+    'option-select-crop': 'ਫਸਲ ਚੁਣੋ',
+    'option-wheat': 'ਕਣਕ',
+    'option-rice': 'ਝੋਨਾ',
+    'option-cotton': 'ਕਪਾਹ',
+    'option-sugarcane': 'ਗੰਨਾ',
+    'label-leaf-condition': 'ਪੱਤੇ ਦੀ ਹਾਲਤ (ਵਿਕਲਪਿਕ):',
+    'option-select-condition': 'ਹਾਲਤ ਚੁਣੋ',
+    'option-healthy': 'ਸਿਹਤਮੰਦ (ਹਰਾ)',
+    'option-yellowing': 'ਪੀਲੇ ਪੱਤੇ',
+    'option-spots': 'ਭੂਰੇ ਧੱਬੇ',
+    'option-wilting': 'ਮੁਰਝਾਉਣਾ',
+    'button-analyze': 'ਫਸਲ ਦੀ ਜਾਂਚ ਕਰੋ',
+    'label-crop-name': 'ਫਸਲ ਦਾ ਨਾਮ:',
+    'label-area': 'ਜ਼ਮੀਨ ਦਾ ਰਕਬਾ (ਏਕੜ):',
+    'label-fertilizer': 'ਖਾਦ (ਕਿਲੋ/ਏਕੜ):',
+    'button-yield': 'ਪੈਦਾਵਾਰ ਦੀ ਭਵਿੱਖਬਾਣੀ ਕਰੋ',
+    'label-market-crop': 'ਫਸਲ ਚੁਣੋ:',
+    'option-potato': 'ਆਲੂ',
+    'label-mandi': 'ਮੰਡੀ:',
+    'option-select-market': 'ਮੰਡੀ ਚੁਣੋ',
+    'option-delhi': 'ਦਿੱਲੀ ਮੰਡੀ',
+    'option-punjab': 'ਪੰਜਾਬ ਮੰਡੀ',
+    'option-gujarat': 'ਗੁਜਰਾਤ ਮੰਡੀ',
+    'button-price': 'ਭਾਅ ਦੀ ਭਵਿੱਖਬਾਣੀ ਲਵੋ',
+    'placeholder-temperature': '25',
+    'placeholder-rainfall': '800',
+    'placeholder-temperature-current': '30',
+    'placeholder-crop': 'ਜਿਵੇਂ: ਕਣਕ',
+    'placeholder-area': '10',
+    'placeholder-fertilizer': '50'
+});
+
+const legacyTranslations = {
+    hi: {
+        'Profile Photo': 'प्रोफ़ाइल फोटो', 'Visit Founder Website': 'संस्थापक की वेबसाइट देखें',
+        'Compare SmartFarm AI\'s app size and features with other popular agricultural and mobile applications': 'SmartFarm AI के ऐप आकार और सुविधाओं की तुलना अन्य कृषि और मोबाइल ऐप से करें',
+        'Feature': 'विशेषता', 'Kisan Network': 'किसान नेटवर्क', 'ENAM Mandi': 'ई-नाम मंडी', 'Weather App': 'मौसम ऐप',
+        'Live Updates': 'लाइव अपडेट', 'AI-Powered': 'एआई-संचालित', 'Real-time': 'रीयल-टाइम', 'Computer Vision': 'कंप्यूटर विजन',
+        'ML Model': 'एमएल मॉडल', 'AI Prediction': 'एआई पूर्वानुमान', 'Live Rates': 'लाइव दरें', 'Mandi Prices': 'मंडी भाव',
+        'Detailed': 'विस्तृत', 'Works Offline': 'ऑफलाइन काम करता है', 'End-to-End Encrypted': 'एंड-टू-एंड एन्क्रिप्टेड',
+        'FREE': 'मुफ्त', 'Basic': 'बुनियादी', 'Secure': 'सुरक्षित', 'Ads': 'विज्ञापनों सहित',
+        'Government Update': 'सरकारी अपडेट', 'Market Update': 'बाजार अपडेट', 'Weather Alert': 'मौसम सतर्कता',
+        'Disaster Management': 'आपदा प्रबंधन', 'Safety Advisory': 'सुरक्षा सलाह', 'Subsidy News': 'सब्सिडी समाचार',
+        'Pest Alert': 'कीट सतर्कता', 'Digital Initiative': 'डिजिटल पहल', 'Read more': 'और पढ़ें',
+        'Loading live news and information...': 'लाइव समाचार और जानकारी लोड हो रही है...',
+        'Unable to load live news. Showing latest farmer updates.': 'लाइव समाचार लोड नहीं हो सका। नवीनतम किसान अपडेट दिखाए जा रहे हैं।',
+        'Latest Farmer Subsidies & News': 'नवीनतम किसान सब्सिडी और समाचार',
+        'PM-KISAN Yojana: ₹6,000 Installments Begin': 'पीएम-किसान योजना: ₹6,000 की किस्त शुरू',
+        'Record Wheat Procurement at ₹2,450 per Quintal': '₹2,450 प्रति क्विंटल पर गेहूं की रिकॉर्ड खरीद',
+        'Monsoon Alert: Heavy Rainfall Expected in North India': 'मानसून सतर्कता: उत्तर भारत में भारी बारिश की संभावना',
+        'Disaster Management Advisory for Farmers': 'किसानों के लिए आपदा प्रबंधन सलाह',
+        'New Subsidy for Drip Irrigation Systems': 'ड्रिप सिंचाई प्रणाली के लिए नई सब्सिडी',
+        'Army Worm Attack Warning for Cotton Farmers': 'कपास किसानों के लिए आर्मी वर्म हमले की चेतावनी',
+        'e-NAM Platform: 1 Million Farmers Trading Online': 'ई-नाम प्लेटफॉर्म: 10 लाख किसान ऑनलाइन व्यापार कर रहे हैं',
+        'Government announces new farm subsidy': 'सरकार ने नई कृषि सब्सिडी की घोषणा की',
+        'Market prices update': 'बाजार भाव अपडेट', 'Weather advisory issued': 'मौसम सलाह जारी',
+        'Please fill all fields': 'कृपया सभी जानकारी भरें', 'Please select a region': 'कृपया क्षेत्र चुनें',
+        'Please select both crop and leaf condition': 'कृपया फसल और पत्ते की स्थिति दोनों चुनें',
+        'Please consult with a plant pathologist.': 'कृपया पौधा रोग विशेषज्ञ से सलाह लें।'
+    },
+    pa: {
+        'Profile Photo': 'ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ', 'Visit Founder Website': 'ਸੰਸਥਾਪਕ ਦੀ ਵੈੱਬਸਾਈਟ ਵੇਖੋ',
+        'Compare SmartFarm AI\'s app size and features with other popular agricultural and mobile applications': 'SmartFarm AI ਦੇ ਐਪ ਆਕਾਰ ਅਤੇ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਦੀ ਹੋਰ ਖੇਤੀਬਾੜੀ ਅਤੇ ਮੋਬਾਈਲ ਐਪਾਂ ਨਾਲ ਤੁਲਨਾ ਕਰੋ',
+        'Feature': 'ਵਿਸ਼ੇਸ਼ਤਾ', 'Kisan Network': 'ਕਿਸਾਨ ਨੈੱਟਵਰਕ', 'ENAM Mandi': 'ਈ-ਨਾਮ ਮੰਡੀ', 'Weather App': 'ਮੌਸਮ ਐਪ',
+        'Live Updates': 'ਲਾਈਵ ਅੱਪਡੇਟ', 'AI-Powered': 'ਏਆਈ-ਸੰਚਾਲਿਤ', 'Real-time': 'ਰੀਅਲ-ਟਾਈਮ', 'Computer Vision': 'ਕੰਪਿਊਟਰ ਵਿਜ਼ਨ',
+        'ML Model': 'ਐਮਐਲ ਮਾਡਲ', 'AI Prediction': 'ਏਆਈ ਭਵਿੱਖਬਾਣੀ', 'Live Rates': 'ਲਾਈਵ ਭਾਅ', 'Mandi Prices': 'ਮੰਡੀ ਭਾਅ',
+        'Detailed': 'ਵਿਸਥਾਰਪੂਰਵਕ', 'Works Offline': 'ਆਫਲਾਈਨ ਕੰਮ ਕਰਦਾ ਹੈ', 'End-to-End Encrypted': 'ਐਂਡ-ਟੂ-ਐਂਡ ਇਨਕ੍ਰਿਪਟਡ',
+        'FREE': 'ਮੁਫ਼ਤ', 'Basic': 'ਬੁਨਿਆਦੀ', 'Secure': 'ਸੁਰੱਖਿਅਤ', 'Ads': 'ਇਸ਼ਤਿਹਾਰਾਂ ਸਮੇਤ',
+        'Government Update': 'ਸਰਕਾਰੀ ਅੱਪਡੇਟ', 'Market Update': 'ਮੰਡੀ ਅੱਪਡੇਟ', 'Weather Alert': 'ਮੌਸਮ ਚੇਤਾਵਨੀ',
+        'Disaster Management': 'ਆਫ਼ਤ ਪ੍ਰਬੰਧਨ', 'Safety Advisory': 'ਸੁਰੱਖਿਆ ਸਲਾਹ', 'Subsidy News': 'ਸਬਸਿਡੀ ਖ਼ਬਰਾਂ',
+        'Pest Alert': 'ਕੀੜੇ ਦੀ ਚੇਤਾਵਨੀ', 'Digital Initiative': 'ਡਿਜੀਟਲ ਪਹਿਲ', 'Read more': 'ਹੋਰ ਪੜ੍ਹੋ',
+        'Loading live news and information...': 'ਲਾਈਵ ਖ਼ਬਰਾਂ ਅਤੇ ਜਾਣਕਾਰੀ ਲੋਡ ਹੋ ਰਹੀ ਹੈ...',
+        'Unable to load live news. Showing latest farmer updates.': 'ਲਾਈਵ ਖ਼ਬਰਾਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ। ਨਵੀਆਂ ਕਿਸਾਨ ਖ਼ਬਰਾਂ ਦਿਖਾਈਆਂ ਜਾ ਰਹੀਆਂ ਹਨ।',
+        'Latest Farmer Subsidies & News': 'ਨਵੀਆਂ ਕਿਸਾਨ ਸਬਸਿਡੀ ਅਤੇ ਖ਼ਬਰਾਂ',
+        'PM-KISAN Yojana: ₹6,000 Installments Begin': 'ਪੀਐਮ-ਕਿਸਾਨ ਯੋਜਨਾ: ₹6,000 ਦੀ ਕਿਸ਼ਤ ਸ਼ੁਰੂ',
+        'Record Wheat Procurement at ₹2,450 per Quintal': '₹2,450 ਪ੍ਰਤੀ ਕੁਇੰਟਲ ਤੇ ਕਣਕ ਦੀ ਰਿਕਾਰਡ ਖਰੀਦ',
+        'Monsoon Alert: Heavy Rainfall Expected in North India': 'ਮਾਨਸੂਨ ਚੇਤਾਵਨੀ: ਉੱਤਰੀ ਭਾਰਤ ਵਿੱਚ ਭਾਰੀ ਬਾਰਿਸ਼ ਦੀ ਸੰਭਾਵਨਾ',
+        'Disaster Management Advisory for Farmers': 'ਕਿਸਾਨਾਂ ਲਈ ਆਫ਼ਤ ਪ੍ਰਬੰਧਨ ਸਲਾਹ',
+        'New Subsidy for Drip Irrigation Systems': 'ਡ੍ਰਿਪ ਸਿੰਚਾਈ ਪ੍ਰਣਾਲੀ ਲਈ ਨਵੀਂ ਸਬਸਿਡੀ',
+        'Army Worm Attack Warning for Cotton Farmers': 'ਕਪਾਹ ਕਿਸਾਨਾਂ ਲਈ ਆਰਮੀ ਵਰਮ ਹਮਲੇ ਦੀ ਚੇਤਾਵਨੀ',
+        'e-NAM Platform: 1 Million Farmers Trading Online': 'ਈ-ਨਾਮ ਪਲੇਟਫਾਰਮ: 10 ਲੱਖ ਕਿਸਾਨ ਆਨਲਾਈਨ ਵਪਾਰ ਕਰ ਰਹੇ ਹਨ',
+        'Government announces new farm subsidy': 'ਸਰਕਾਰ ਨੇ ਨਵੀਂ ਖੇਤੀ ਸਬਸਿਡੀ ਦਾ ਐਲਾਨ ਕੀਤਾ',
+        'Market prices update': 'ਮੰਡੀ ਭਾਅ ਅੱਪਡੇਟ', 'Weather advisory issued': 'ਮੌਸਮ ਸਲਾਹ ਜਾਰੀ',
+        'Please fill all fields': 'ਕਿਰਪਾ ਕਰਕੇ ਸਾਰੀ ਜਾਣਕਾਰੀ ਭਰੋ', 'Please select a region': 'ਕਿਰਪਾ ਕਰਕੇ ਖੇਤਰ ਚੁਣੋ',
+        'Please select both crop and leaf condition': 'ਕਿਰਪਾ ਕਰਕੇ ਫਸਲ ਅਤੇ ਪੱਤੇ ਦੀ ਹਾਲਤ ਦੋਵੇਂ ਚੁਣੋ',
+        'Please consult with a plant pathologist.': 'ਕਿਰਪਾ ਕਰਕੇ ਪੌਦਾ ਰੋਗ ਮਾਹਿਰ ਨਾਲ ਸਲਾਹ ਕਰੋ।'
+    }
+};
+
+function translateLegacyText() {
+    const dictionary = Object.assign({}, legacyTranslations[currentLanguage] || {});
+    const english = Object.assign({}, translations.en, resultTranslations.en);
+    const selected = Object.assign({}, translations[currentLanguage], resultTranslations[currentLanguage]);
+    Object.keys(english).forEach(key => {
+        if (selected[key] && english[key] !== selected[key]) {
+            dictionary[english[key]] = selected[key];
+        }
+    });
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach(node => {
+        const parent = node.parentElement;
+        if (!parent || ['SCRIPT', 'STYLE', 'OPTION'].includes(parent.tagName) || parent.closest('[data-i18n]')) return;
+        if (!node.dataset.originalText) node.dataset.originalText = node.nodeValue;
+        const original = node.dataset.originalText.trim();
+        if (original) node.nodeValue = node.dataset.originalText.replace(original, dictionary[original] || original);
+    });
+    document.querySelectorAll('[alt], [aria-label]').forEach(element => {
+        ['alt', 'aria-label'].forEach(attribute => {
+            if (!element.hasAttribute(attribute)) return;
+            const key = `original${attribute.charAt(0).toUpperCase()}${attribute.slice(1)}`;
+            if (!element.dataset[key]) element.dataset[key] = element.getAttribute(attribute);
+            const original = element.dataset[key];
+            element.setAttribute(attribute, dictionary[original] || original);
+        });
+    });
+}
+resultTranslations.pa = Object.assign({}, resultTranslations.en, {
+    'result-recommended-crop': 'ਸਿਫਾਰਸ਼ ਕੀਤੀ ਫਸਲ:',
+    'result-status': 'ਸਥਿਤੀ:',
+    'result-water-recommendation': 'ਪਾਣੀ ਦੀ ਸਿਫਾਰਸ਼:',
+    'result-detection': 'ਜਾਂਚ ਨਤੀਜਾ:',
+    'result-treatment': 'ਸੁਝਾਇਆ ਇਲਾਜ:',
+    'result-expected-yield': 'ਉਮੀਦ ਕੀਤੀ ਪੈਦਾਵਾਰ:',
+    'result-quality': 'ਗੁਣਵੱਤਾ:',
+    'result-current-price': 'ਮੌਜੂਦਾ ਭਾਅ:',
+    'result-per-quintal': 'ਪ੍ਰਤੀ ਕੁਇੰਟਲ',
+    'result-best-time': 'ਵੇਚਣ ਦਾ ਵਧੀਆ ਸਮਾਂ:',
+    'result-price-trend': 'ਭਾਅ ਦਾ ਰੁਝਾਨ:',
+    'crop-multi': 'ਮਿਲੀ-ਜੁਲੀ ਫਸਲ ਦੀ ਸਿਫਾਰਸ਼',
+    'crop-rice': 'ਝੋਨਾ - ਵੱਧ ਪੈਦਾਵਾਰ ਦੀ ਸੰਭਾਵਨਾ',
+    'crop-wheat': 'ਕਣਕ - ਘੱਟ ਪਾਣੀ ਵਾਲੀ ਫਸਲ',
+    'crop-millet': 'ਬਾਜਰਾ - ਸੋਕਾ ਸਹਿਣਸ਼ੀਲ ਫਸਲ',
+    'crop-sugarcane': 'ਗੰਨਾ - ਵੱਧ ਵਰਖਾ ਵਾਲਾ ਖੇਤਰ',
+    'irrigation-normal': 'ਸਧਾਰਨ',
+    'irrigation-regular': 'ਨਿਯਮਿਤ ਪਾਣੀ ਦਿੰਦੇ ਰਹੋ',
+    'irrigation-urgent': 'ਜ਼ਰੂਰੀ - ਤੁਰੰਤ ਪਾਣੀ ਦੀ ਲੋੜ ਹੈ',
+    'irrigation-urgent-advice': '24 ਘੰਟਿਆਂ ਵਿੱਚ ਸਿੰਚਾਈ ਕਰੋ। ਸੁਝਾਈ ਮਾਤਰਾ: 40-50 ਮਿ.ਮੀ.',
+    'irrigation-low': 'ਨਮੀ ਘੱਟ ਹੈ',
+    'irrigation-low-advice': 'ਅਗਲੇ 2-3 ਦਿਨਾਂ ਵਿੱਚ ਸਿੰਚਾਈ ਕਰੋ। ਸੁਝਾਈ ਮਾਤਰਾ: 25-30 ਮਿ.ਮੀ.',
+    'irrigation-sufficient': 'ਨਮੀ ਕਾਫ਼ੀ ਹੈ - ਸਿੰਚਾਈ ਨਾ ਕਰੋ',
+    'irrigation-sufficient-advice': 'ਪਾਣੀ ਖੜ੍ਹਾ ਹੋਣ ਤੋਂ ਬਚੋ। ਪਾਣੀ ਦੇਣ ਤੋਂ ਪਹਿਲਾਂ 3-4 ਦਿਨ ਉਡੀਕ ਕਰੋ',
+    'irrigation-hot': ' (ਵੱਧ ਤਾਪਮਾਨ - ਸਿੰਚਾਈ ਦੀ ਨਿਗਰਾਨੀ ਵਧਾਓ)',
+    'yield-unit': 'ਕੁਇੰਟਲ',
+    'yield-acre': 'ਪ੍ਰਤੀ ਏਕੜ',
+    'quality-average': 'ਔਸਤ',
+    'quality-organic': 'ਚੰਗੀ (ਜੈਵਿਕ)',
+    'quality-good': 'ਚੰਗੀ',
+    'quality-high': 'ਵੱਧ ਪੈਦਾਵਾਰ',
+    'price-upward': 'ਵੱਧ ਰਿਹਾ',
+    'price-downward': 'ਘੱਟ ਰਿਹਾ',
+    'price-stable': 'ਸਥਿਰ',
+    'price-2-3-weeks': '2-3 ਹਫ਼ਤਿਆਂ ਵਿੱਚ',
+    'price-1-2-weeks': '1-2 ਹਫ਼ਤਿਆਂ ਵਿੱਚ',
+    'price-wait-harvest': 'ਕਟਾਈ ਤੱਕ ਉਡੀਕ ਕਰੋ',
+    'price-immediate': 'ਤੁਰੰਤ ਵੇਚੋ',
+    'price-1-week': '1 ਹਫ਼ਤੇ ਵਿੱਚ ਵੇਚੋ'
+});
+
 function resultText(key) {
     return resultTranslations[currentLanguage][key] || resultTranslations.en[key] || key;
 }
@@ -554,6 +760,12 @@ function translatePage() {
             element.textContent = translation;
         }
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        const placeholder = translations[currentLanguage][key] || translations.en[key];
+        if (placeholder) element.setAttribute('placeholder', placeholder);
+    });
+    translateLegacyText();
 }
 
 function refreshVisibleResults() {
@@ -732,15 +944,64 @@ function getWeatherAlerts() {
                  <p>💨 <strong>सूखी हवा:</strong> वाष्पीकरण की दर अधिक रहने की संभावना।</p>
                  <p>⚠️ <strong>सलाह:</strong> नमी बनाए रखने के लिए खेतों में मल्च डालें। गर्मी के तनाव पर नजर रखें।</p>`
     };
+
+    const punjabiAlerts = {
+        north: '<p>🌡️ <strong>ਤਾਪਮਾਨ ਚੇਤਾਵਨੀ:</strong> ਤੇਜ਼ ਹਵਾ (20-25 ਕਿਮੀ/ਘੰਟਾ) ਦੀ ਸੰਭਾਵਨਾ ਹੈ। ਫਸਲਾਂ ਦੀ ਰੱਖਿਆ ਕਰੋ।</p><p>☔ <strong>ਵਰਖਾ:</strong> 2-3 ਦਿਨਾਂ ਵਿੱਚ ਹਲਕੀ ਬਾਰਿਸ਼।</p><p>⚠️ <strong>ਸਲਾਹ:</strong> ਸਵੇਰੇ ਪਾਲੇ ਤੋਂ ਨਾਜ਼ੁਕ ਪੌਦਿਆਂ ਦੀ ਰੱਖਿਆ ਕਰੋ।</p>',
+        south: '<p>☔ <strong>ਮਾਨਸੂਨ ਚੇਤਾਵਨੀ:</strong> ਅਗਲੇ 24-48 ਘੰਟਿਆਂ ਵਿੱਚ ਭਾਰੀ ਬਾਰਿਸ਼ ਦੀ ਸੰਭਾਵਨਾ।</p><p>💨 <strong>ਹਵਾ:</strong> ਦਰਮਿਆਨੀ ਹਵਾ।</p><p>⚠️ <strong>ਸਲਾਹ:</strong> ਪਾਣੀ ਦੀ ਨਿਕਾਸੀ ਠੀਕ ਰੱਖੋ।</p>',
+        east: '<p>🌪️ <strong>ਤੂਫ਼ਾਨ ਚੇਤਾਵਨੀ:</strong> ਸ਼ਾਮ ਤੱਕ ਆੰਧੀ ਦੀ ਸੰਭਾਵਨਾ।</p><p>☔ <strong>ਵਰਖਾ:</strong> ਅਗਲੇ 3 ਦਿਨਾਂ ਵਿੱਚ ਦਰਮਿਆਨੀ ਤੋਂ ਭਾਰੀ ਬਾਰਿਸ਼।</p><p>⚠️ <strong>ਸਲਾਹ:</strong> ਤੂਫ਼ਾਨ ਦੌਰਾਨ ਖੇਤ ਵਿੱਚ ਕੰਮ ਨਾ ਕਰੋ।</p>',
+        west: '<p>🌞 <strong>ਲੂ ਦੀ ਚੇਤਾਵਨੀ:</strong> ਤਾਪਮਾਨ 42-44°C ਤੱਕ ਪਹੁੰਚ ਸਕਦਾ ਹੈ।</p><p>💨 <strong>ਸੁੱਕੀ ਹਵਾ:</strong> ਪਾਣੀ ਦੇ ਵੱਧ ਵਾਸਪੀਕਰਨ ਦੀ ਸੰਭਾਵਨਾ।</p><p>⚠️ <strong>ਸਲਾਹ:</strong> ਨਮੀ ਬਚਾਉਣ ਲਈ ਖੇਤ ਵਿੱਚ ਮਲਚ ਪਾਓ।</p>'
+    };
     
-    const alerts = currentLanguage === 'hi' ? hindiAlerts : englishAlerts;
-    document.getElementById('weatherContent').innerHTML = alerts[region] || (currentLanguage === 'hi' ? 'मौसम की जानकारी उपलब्ध नहीं है' : 'Weather data unavailable');
+    const alerts = currentLanguage === 'hi' ? hindiAlerts : currentLanguage === 'pa' ? punjabiAlerts : englishAlerts;
+    const unavailable = currentLanguage === 'hi' ? 'मौसम की जानकारी उपलब्ध नहीं है' : currentLanguage === 'pa' ? 'ਮੌਸਮ ਦੀ ਜਾਣਕਾਰੀ ਉਪਲਬਧ ਨਹੀਂ ਹੈ' : 'Weather data unavailable';
+    document.getElementById('weatherContent').innerHTML = alerts[region] || unavailable;
     document.getElementById('weatherResult').classList.remove('hidden');
+}
+
+function previewLeafPhoto(event) {
+    const file = event.target.files && event.target.files[0];
+    const preview = document.getElementById('leafPhotoPreview');
+    if (!file || !preview) return;
+
+    if (!file.type.startsWith('image/')) {
+        event.target.value = '';
+        alert(currentLanguage === 'pa' ? 'ਕਿਰਪਾ ਕਰਕੇ ਪੱਤੇ ਦੀ ਤਸਵੀਰ ਚੁਣੋ।' : 'Please choose a leaf image.');
+        return;
+    }
+    preview.src = URL.createObjectURL(file);
+    preview.classList.remove('hidden');
 }
 
 function detectDisease() {
     const cropType = document.getElementById('cropType').value;
     const leafCondition = document.getElementById('leafCondition').value;
+    const leafPhoto = document.getElementById('leafPhoto').files[0];
+
+    if (!cropType || (!leafCondition && !leafPhoto)) {
+        const message = currentLanguage === 'hi'
+            ? 'कृपया फसल चुनें और पत्ते की तस्वीर या स्थिति दें।'
+            : currentLanguage === 'pa'
+                ? 'ਕਿਰਪਾ ਕਰਕੇ ਫਸਲ ਚੁਣੋ ਅਤੇ ਪੱਤੇ ਦੀ ਤਸਵੀਰ ਜਾਂ ਹਾਲਤ ਦਿਓ।'
+                : 'Please select a crop and provide a leaf photo or condition.';
+        alert(message);
+        return;
+    }
+
+    if (leafPhoto && !leafCondition) {
+        const photoMessage = currentLanguage === 'hi'
+            ? 'तस्वीर प्राप्त हुई। AI रोग मॉडल अभी प्रशिक्षित नहीं है।'
+            : currentLanguage === 'pa'
+                ? 'ਤਸਵੀਰ ਮਿਲ ਗਈ ਹੈ। ਏਆਈ ਰੋਗ ਮਾਡਲ ਅਜੇ ਸਿਖਲਾਈ ਪ੍ਰਾਪਤ ਨਹੀਂ ਹੈ।'
+                : 'Photo received. The AI disease model is not trained yet.';
+        document.getElementById('diseaseStatus').textContent = photoMessage;
+        document.getElementById('treatmentAdvice').textContent = currentLanguage === 'hi'
+            ? 'कृपया कृषि विशेषज्ञ से सलाह लें।'
+            : currentLanguage === 'pa'
+                ? 'ਕਿਰਪਾ ਕਰਕੇ ਖੇਤੀ ਮਾਹਿਰ ਨਾਲ ਸਲਾਹ ਕਰੋ।'
+                : 'Please consult an agricultural expert.';
+        document.getElementById('diseaseResult').classList.remove('hidden');
+        return;
+    }
     
     const diseases = {
         'wheat': {
@@ -772,14 +1033,29 @@ function detectDisease() {
         }
     };
     
-    const diseaseData = currentLanguage === 'hi' ? hindiDiseases : diseases;
+    const punjabiDiseases = {
+        wheat: {
+            healthy: { status: '✅ ਕੋਈ ਬਿਮਾਰੀ ਨਹੀਂ ਮਿਲੀ', treatment: 'ਨਿਯਮਿਤ ਦੇਖਭਾਲ ਅਤੇ ਨਿਗਰਾਨੀ ਜਾਰੀ ਰੱਖੋ।' },
+            yellowing: { status: '⚠️ ਪੀਲਾ ਰਤੂਆ ਹੋਣ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਫਫੂੰਦਨਾਸ਼ਕ ਦੀ ਸਲਾਹ ਲਈ ਖੇਤੀ ਮਾਹਿਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।' },
+            spots: { status: '⚠️ ਪੱਤੇ ਦੇ ਧੱਬੇ ਹੋਣ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਤੁਰੰਤ ਖੇਤੀ ਮਾਹਿਰ ਦੀ ਸਲਾਹ ਲਓ।' },
+            wilting: { status: '🔴 ਗੰਭੀਰ - ਜੜ੍ਹਾਂ ਦੇ ਸੜਨ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਪਾਣੀ ਦੀ ਨਿਕਾਸੀ ਸੁਧਾਰੋ ਅਤੇ ਤੁਰੰਤ ਮਾਹਿਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।' }
+        },
+        rice: {
+            healthy: { status: '✅ ਕੋਈ ਬਿਮਾਰੀ ਨਹੀਂ ਮਿਲੀ', treatment: 'ਪਾਣੀ ਦਾ ਪੱਧਰ ਅਤੇ ਪੋਸ਼ਕ ਪ੍ਰਬੰਧਨ ਠੀਕ ਰੱਖੋ।' },
+            yellowing: { status: '⚠️ ਪੋਸ਼ਕ ਤੱਤਾਂ ਦੀ ਕਮੀ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਖੇਤੀ ਮਾਹਿਰ ਦੀ ਸਲਾਹ ਨਾਲ ਇਲਾਜ ਕਰੋ।' },
+            spots: { status: '⚠️ ਭੂਰੇ ਪੱਤੇ ਦੇ ਧੱਬੇ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਖੇਤੀ ਮਾਹਿਰ ਨਾਲ ਸਲਾਹ ਕਰੋ।' },
+            wilting: { status: '🔴 ਗੰਭੀਰ - ਝੁਲਸਾ ਰੋਗ ਦੀ ਸੰਭਾਵਨਾ', treatment: 'ਤੁਰੰਤ ਖੇਤੀ ਮਾਹਿਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।' }
+        }
+    };
+
+    const diseaseData = currentLanguage === 'hi' ? hindiDiseases : currentLanguage === 'pa' ? punjabiDiseases : diseases;
     if (diseaseData[cropType] && diseaseData[cropType][leafCondition]) {
         const disease = diseaseData[cropType][leafCondition];
         document.getElementById('diseaseStatus').textContent = disease.status;
         document.getElementById('treatmentAdvice').textContent = disease.treatment;
     } else {
-        document.getElementById('diseaseStatus').textContent = currentLanguage === 'hi' ? 'रोग का पता नहीं लगाया जा सका' : 'Unable to determine disease';
-        document.getElementById('treatmentAdvice').textContent = currentLanguage === 'hi' ? 'कृपया पौधा रोग विशेषज्ञ से सलाह लें।' : 'Please consult with a plant pathologist.';
+        document.getElementById('diseaseStatus').textContent = currentLanguage === 'hi' ? 'रोग का पता नहीं लगाया जा सका' : currentLanguage === 'pa' ? 'ਬਿਮਾਰੀ ਦਾ ਪਤਾ ਨਹੀਂ ਲੱਗ ਸਕਿਆ' : 'Unable to determine disease';
+        document.getElementById('treatmentAdvice').textContent = currentLanguage === 'hi' ? 'कृपया पौधा रोग विशेषज्ञ से सलाह लें।' : currentLanguage === 'pa' ? 'ਕਿਰਪਾ ਕਰਕੇ ਖੇਤੀ ਮਾਹਿਰ ਨਾਲ ਸਲਾਹ ਕਰੋ।' : 'Please consult with a plant pathologist.';
     }
     
     document.getElementById('diseaseResult').classList.remove('hidden');

@@ -27,6 +27,20 @@ body {
     background-image: linear-gradient(135deg, rgba(254, 252, 232, 0.92), rgba(240, 253, 244, 0.9));
 }
 
+.leaf-photo-preview {
+    display: block;
+    width: min(100%, 260px);
+    max-height: 180px;
+    margin-top: 0.75rem;
+    object-fit: cover;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.leaf-photo-preview.hidden {
+    display: none;
+}
+
 /* ===== NAVIGATION BAR ===== */
 .navbar {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
